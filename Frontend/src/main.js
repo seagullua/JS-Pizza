@@ -8,6 +8,11 @@ $(function(){
     var PizzaCart = require('./pizza/PizzaCart');
     var Pizza_List = require('./Pizza_List');
 
+    API.getPizzaList(function(err, pizza){
+    	if (err){
+    		return;
+    	}
+        
     PizzaCart.initialiseCart();
     PizzaMenu.initialiseMenu();
 
