@@ -13,60 +13,93 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
 
 
+
 </head>
-<body>
-<div id="cart"></div>
-<div class="container">
-    <div class="row" id="pizza_list">
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail pizza-card">
-                <img src="assets/images/pizza_1.jpg">
-
-                <div class="caption"><h3>Thumbnail label</h3>
-
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
-                    <p>
-                        <a href="#" class="btn btn-primary">Button 2</a>
-                        <a href="#" class="btn btn-default">Button 1</a>
-                    </p>
-                </div>
+    
+<body> 
+    
+<header class="main-header" role="fixed">
+<div class="main-header-top" >
+    <div class="site-icon">
+        <a style="text-decoration:none" class="pizza-logo" href="#">
+            <div id="pizza-title2" class="title-1">
+                Pizza
             </div>
+        </a>
+    </div>
+    
+    <div class="main-header-top-item">
+        <div class="header-box">
+            <p class="fs14">(044)222 3 222</p>
         </div>
-
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail pizza-card">
-                <img src="assets/images/pizza_2.jpg">
-
-                <div class="caption"><h3>Thumbnail label</h3>
-
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
-                    <p>
-                        <a href="#" class="btn btn-primary">Button 3</a>
-                        <a href="#" class="btn btn-default">Button 4</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail pizza-card">
-                <img src="assets/images/pizza_3.jpg">
-
-                <div class="caption"><h3>Thumbnail label</h3>
-
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
-                    <p>
-                        <a href="#" class="btn btn-primary">Button 5</a>
-                        <a href="#" class="btn btn-default">Button 6</a>
-                    </p>
-                </div>
+        <div class="header-box">
+            <div class="fs14">
+                24 години / 7 днів на тиждень
             </div>
         </div>
     </div>
+        <div class="main-header-top-item visible-lg-inline-block">
+            <div class="header-box">
+                <p class="fs14">Безкоштовна доставка піци </p>
+            </div>
+        </div>
+    <div type="button" class="main-header-top-item btn btn-warning sign-in-button">
+        Ввійти
+    </div>
 </div>
+    <nav class="main-nav" role="navigation">
+        <p class="main-nav-item">
+            Піца
+        </p>
+    </nav>
+
+</header>
+
+<div class="row text-center mainTitle">
+                  <div class="allPizzas text-centre">Усі піци</div>
+                  <span id="pizzaNum" class="allPizzasNumber">9</span>
+</div>
+        <div class="row text-center">
+            <button type="button" class="btn btn-warning pizzaType pizzaType-active" id="filter-button-all">Усі</button>
+            <button type="button" class="btn btn-warning pizzaType" id="filter-button-meat">М'ясні</button>
+            <button type="button" class="btn btn-warning pizzaType" id="filter-button-pineapples">З ананасами</button>
+            <button type="button" class="btn btn-warning pizzaType" id="filter-button-mushrooms">З грибами</button>
+            <button type="button" class="btn btn-warning pizzaType" id="filter-button-ocean">З морепродуктами</button>
+            <button type="button" class="btn btn-warning pizzaType" id="filter-button-vega">Вега</button>
+        </div>
+
+    <div class="row  col-sm-9" id="pizza_list">
+
+    </div>
+
+    <div id="cart" class="col-sm-3">
+		<nav class="navbar navbar-default" id="cartHeader">
+		 	<div class="navbar-left">
+		        <p class="navbar-text">Замовлення <span id="count" class="badge">0</span></p>
+		      </div>
+		      <div class="navbar-right"><a href="#" class="navbar-text" id="clear"  style="padding-right: 10px;">Очистити замовлення</a></div>
+		</nav>
+		<div id="cartList">
+			    
+		</div>
+        
+         <div class="order-state ">
+                <span class="sum-title">
+                   Сума замовлення:
+                </span>
+             <span class="sum-number" id="sumNum">0 грн</span>
+            <div class="do-order-button">
+
+                <button type="button" class="btn btn-warning btn-lg btn-block button-order">
+                    Замовити
+                </button>
+
+            </div>
+
+        </div>
+	</div>
+
+    <span class="label label-warning discount fs15"><p>ЦЬОГО</p> <p>ТИЖНЯ</p> <p>НА ВСЕ</p><hr/>-20% </span>
 
 <!-- jQuery JavaScript -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
@@ -75,6 +108,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <!--Own JavaScript -->
-<!--<script type="text/javascript"  src="assets/js/main.js"> </script>-->
+<!--script type="text/javascript"  src="assets/js/main.js"> </script-->
+<script type="text/javascript"  src="assets/js/main.js"> </script>
 </body>
 </html>

@@ -1,0 +1,48 @@
+<% include common/header.ejs %>
+<script>
+    var order = true;
+</script>
+<div class="row text-center mainTitle">
+                  <div class="allPizzas text-centre">Усі піци</div>
+                  <span id="pizzaNum" class="allPizzasNumber">9</span>
+</div>
+        <div class="row text-center">
+            <button type="button" class="btn btn-warning pizzaType pizzaType-active" id="filter-button-all">Усі</button>
+            <button type="button" class="btn btn-warning pizzaType" id="filter-button-meat">М'ясні</button>
+            <button type="button" class="btn btn-warning pizzaType" id="filter-button-pineapples">З ананасами</button>
+            <button type="button" class="btn btn-warning pizzaType" id="filter-button-mushrooms">З грибами</button>
+            <button type="button" class="btn btn-warning pizzaType" id="filter-button-ocean">З морепродуктами</button>
+            <button type="button" class="btn btn-warning pizzaType" id="filter-button-vega">Вега</button>
+        </div>
+
+    <div class="row  col-sm-9" id="pizza_list">
+
+    </div>
+
+    <div id="cart" class="col-sm-3">
+		<nav class="navbar navbar-default" id="cartHeader">
+		 	<div class="navbar-left">
+		        <p class="navbar-text">Замовлення <span id="count" class="badge">0</span></p>
+		      </div>
+		      <div class="navbar-right"><a href="#" class="navbar-text" id="clear"  style="padding-right: 10px;">Очистити замовлення</a></div>
+		</nav>
+		<div id="cartList">
+			    
+		</div>
+        
+         <div class="order-state ">
+                <span class="sum-title">
+                   Сума замовлення:
+                </span>
+             <span class="sum-number" id="sumNum">0 грн</span>
+            <div class="do-order-button">
+
+                <a href="order.html" style="text-decoration:none;"><button type="button" class="btn btn-warning btn-lg btn-block button-order">
+                    Замовити
+                </button>
+
+            </div>
+
+        </div>
+	</div>
+<% include common/footer.ejs %>
