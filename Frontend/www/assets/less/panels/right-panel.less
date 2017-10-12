@@ -1,0 +1,45 @@
+.right-panel {
+  height: 100%;
+  width: @RightPanelWidth;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  background-color: green;
+}
+
+@RightTopHeight: 80px;
+@RightBottomHeight: 100px;
+
+.center-part {
+  width: 100%;
+  height: 100%;
+
+  overflow-y: scroll;
+
+  padding-top: @RightTopHeight + 20px;
+  padding-bottom: @RightBottomHeight;
+}
+
+.top-part {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 100%;
+  height: @RightTopHeight;
+
+  background-color: aquamarine;
+}
+
+.bottom-part {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  width: 100%;
+  height: @RightBottomHeight;
+
+  background-color: aquamarine;
+}
