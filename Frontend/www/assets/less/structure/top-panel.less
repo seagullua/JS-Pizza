@@ -2,8 +2,59 @@
   width: 100%;
   height: @cartHeight;
   padding-right: @rigthPanelWidth;
+  padding-left: 140px;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(25, 25, 25, 0.8);
+  background-color: rgba(25, 25, 25, 0.9);
+}
+
+.top-info {
+  width: 98%;
+  min-width: 202px;
+  margin-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid @topColor;
+}
+
+.number {
+  width: 160px;
+  padding-top: 1px;
+  padding-left: 0;
+  font-size: 20px;
+  color: @topColor;
+}
+
+.time-work {
+  width: 200px;
+  padding-top: 10px;
+  font-size: 12px;
+  color: @topColor;
+}
+
+.price-deliver {
+  width: 250px;
+  padding-top: 6px;
+  font-size: 16px;
+  color: @topColor;
+}
+
+.enter {
+  float: right;
+  box-shadow: @buttonShadow;
+}
+
+.pizza-link {
+  a, a:hover, a:visited {
+    font-size: 16px;
+    text-decoration: none;
+    color: @backColor;
+  }
+}
+
+@media (max-width: 768px) {
+  .number {
+    width: 50%;
+  }
 }

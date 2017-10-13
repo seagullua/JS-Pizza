@@ -1,0 +1,26 @@
+.top-discount {
+  width: 100px;
+  height: @cartHeight+10px;
+  background-color: @discountColor;
+  border: 0.5px solid @discountBorderColor;
+  border-bottom: none;
+  font-size: 26px;
+  padding-top: 10px;
+  text-align: center;
+  color: @backColor;
+  position: fixed;
+  top: 0;
+  left: 8px;
+  z-index: 1;
+  a, a:hover, a:visited {
+    font-size: 20px;
+    text-decoration: none;
+    color: @backColor;
+  }
+}
+
+#discount {
+  margin-left: -0.5px;
+  margin-top: -20px;
+  transform: rotate(180deg);
+}

@@ -82,26 +82,28 @@
   margin-right: 15px;
 }
 
-.price {
+.price, .count {
+  vertical-align: middle;
   font-size: 16px;
   font-weight: bold;
 }
 
 .minus, .plus, .remove {
+  width: 30px;
   border-radius: 100%;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 3px;
+  margin-right: 3px;
+  box-shadow: @buttonShadow;
 }
 
-.remove, .remove:hover {
+.glyphicon-minus, .glyphicon-plus, .glyphicon-remove {
+  font-size: 14px;
+}
+
+.btn.btn-default, .btn.btn-default:hover, .btn.btn-default:active {
   color: @ovalColor;
-}
-
-.count {
-  font-weight: bold;
-  font-size: 16px;
 }
 
 .img-circle {
@@ -144,4 +146,5 @@
   margin: auto;
   width: 250px;
   font-size: 16px;
+  box-shadow: @buttonShadow;
 }
