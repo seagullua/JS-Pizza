@@ -6,7 +6,8 @@
   top: 0;
   right: 0;
 
-  background-color: green;
+  box-shadow: rgba(0,0,0,.2) -3px 3px 10px;
+  background-color: #F5F5F5;
 }
 
 @RightTopHeight: 80px;
@@ -16,10 +17,50 @@
   width: 100%;
   height: 100%;
 
-  overflow-y: scroll;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   padding-top: @RightTopHeight + 20px;
   padding-bottom: @RightBottomHeight;
+
+  .order-one {
+    height: 120px;
+    padding: 0px 61px 10px 24px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    position: relative;
+
+    .img-aside {
+      position: absolute;
+      right: -48px;
+      top: 5px;
+      border-radius: 50% 0 0 50%;
+      max-height: 96px;
+      max-width: 96px;
+    }
+
+    .order-title {
+      font-size: 20px;
+      color: #ec890e;
+    }
+
+    .order-text {
+      font-size: 12px;
+      margin-top: 6px;
+      margin-bottom: 6px;
+
+      .gram-image {
+        margin-left: 15px;
+      }
+    }
+  }
+
+  .no-order-text {
+    font-size: 16px;
+    color: #4e4e4e;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
 }
 
 .top-part {
@@ -30,7 +71,28 @@
   width: 100%;
   height: @RightTopHeight;
 
-  background-color: aquamarine;
+  padding-top: 25px;
+  background-color: #fff;
+
+  .top-order-title {
+    width: 100%;
+    padding-bottom: 13px;
+
+    .order-list-title {
+      font-size: 20px;
+      font-weight: 700;
+      padding-left: 15px;
+    }
+
+    .clear-order {
+      float: right;
+      margin-top: 10px;
+      padding-right: 15px;
+      font-size: 10px;
+      color: rgba(0, 0, 0, .5);
+    }
+
+  }
 }
 
 .bottom-part {
@@ -41,5 +103,34 @@
   width: 100%;
   height: @RightBottomHeight;
 
-  background-color: aquamarine;
+  padding: 10px;
+  margin: 0;
+  background-color: #fff;
+  box-sizing: border-box;
+
+  .order-state {
+    padding: 5px;
+
+    .sum-title {
+      display: none;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .sum-number {
+      display: none;
+      float: right;
+      font-size: 20px;
+      font-weight: 700;
+      padding-right: 30px;
+      margin-bottom: 5px;
+    }
+
+    .do-order-button {
+      padding: 10px 20px 10px 10px;
+    }
+
+  }
 }
+
