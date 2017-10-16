@@ -7,4 +7,44 @@
   top: 0;
   left: 0;
   background-color: rgba(12, 6, 1, 0.7);
+
+  .headers {
+    margin-left: 130px;
+    padding-right: @RightPanelWidth/2;
+    width: 100%;
+    height: 100%;
+   // border: 1px solid #a1a1a1;
+
+    .top-header {
+      height: @TopPanelHeight/2;
+      color: #a1a1a1;
+      border-bottom: 1px solid #a1a1a1;
+      .sign-in {
+        color: #fff;
+        margin-top: 3px;
+        float: right;
+      }
+      .phone-number {
+        font-size: 20px;
+        padding: 5px 30px 5px 5px;
+      }
+      .work-days {
+        font-size: 12px;
+        padding-right: 30px;
+      }
+      .delivery {
+        font-size: 16px;
+        padding-right: 30px;
+      }
+    }
+    .down-header {
+      height: @TopPanelHeight/2;
+      color: #a1a1a1;
+      padding-top: 5px;
+      .pizza-page {
+        font-size: 16px;
+        color: white;
+      }
+    }
+  }
 }

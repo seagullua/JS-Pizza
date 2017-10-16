@@ -24,9 +24,10 @@
   padding-bottom: @RightBottomHeight;
 
   .order-one {
+    display: none;
     height: 120px;
     padding: 0px 61px 10px 24px;
-    border-bottom: 1px solid rgba(0,0,0,.1);
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
     position: relative;
 
     .img-aside {
@@ -52,9 +53,33 @@
         margin-left: 15px;
       }
     }
+
+    .price-box {
+      font-size: 14px;
+      font-weight: 700;
+
+      .price {
+        margin-right: 10px;
+      }
+      .btn-circle {
+        width: 30px;
+        height: 30px;
+        padding: 6px 0;
+        font-size: 12px;
+        border-radius: 15px;
+      }
+      .order-pizza-count {
+        font-size: 14px;
+      }
+      .count-clear {
+        margin-left: 25px;
+        color: #ec890e;
+      }
+    }
   }
 
   .no-order-text {
+   // display: none;
     font-size: 16px;
     color: #4e4e4e;
     text-align: center;

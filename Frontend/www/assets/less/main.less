@@ -31,7 +31,6 @@
 
 .pizza-all-types {
   display: inline-block;
-  //padding: 15px;
 }
 
 .page-title .all-pizza-type-wrap .pizza-all-types .active a{
@@ -51,6 +50,87 @@
 }
 
 
-.bottom-panel, .page-title, .pizza-all-types {
+.bottom-panel, .page-title, .pizza-all-types, .pizza-small, .pizza-big, .discount-panel, .top-badge {
   text-align: center;
+}
+
+.discount-panel {
+  position: fixed;
+  bottom: 0;
+  left: 9px;
+  border-left: 1px solid #d16200;
+  border-right: 1px solid #d16200;
+
+  background-color: #ea862e;
+  z-index: 99;
+  width: 100px;
+  height: 116px;
+  padding: 10px;
+  color: #ffffff;
+
+  .discount-before {
+    position: fixed;
+    bottom: 116px;
+    left: 9px;
+    width: 100px;
+    height: 11px;
+    background-image: url(../images/discount.svg);
+    background-size: 100px 11px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .discount-title {
+    font-size: 15px;
+    font-weight: 700;
+    font-family: Helvetica,Calibri;
+    border-bottom: 2px dotted #d16301;
+    margin-bottom: 7px;
+    padding-bottom: 3px;
+  }
+
+  .discount-text {
+    font-size: 15px;
+    font-weight: 700;
+  }
+}
+
+.top-badge {
+  position: fixed;
+  top: 0;
+  left: 9px;
+  border-left: 1px solid #d16200;
+  border-right: 1px solid #d16200;
+
+  background-color: #ea862e;
+  z-index: 99;
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  color: #ffffff;
+
+  .badge-before {
+    position: fixed;
+    top: 100px;
+    left: 9px;
+    width: 100px;
+    height: 11px;
+    background-image: url(../images/discount.svg);
+    background-size: 100px 11px;
+    padding: 0;
+    margin: 0;
+    transform: scaleY(-1);
+  }
+
+  .badge-title {
+    font-size: 23px;
+    //font-weight: 700;
+    font-family: Helvetica,Calibri;
+    padding-top: 10px;
+    padding-bottom: 3px;
+  }
+}
+
+* {
+  box-sizing: border-box;
 }

@@ -17,6 +17,23 @@
 <body>
 <div id="cart"></div>
 <div class="main-pizza">
+    <div class="discount-panel">
+        <div class="discount-before"></div>
+        <div class="discount-title">
+            ЦЬОГО ТИЖНЯ
+            <br>
+            НА ВСЕ
+        </div>
+        <div class="discount-text">-20%</div>
+    </div>
+    <div class="top-badge">
+        <div class="badge-before"></div>
+        <div class="badge-title">
+            PIZZA
+            <br>
+            KMA
+        </div>
+    </div>
     <div class="inner-container">
         <div class="page-title">
             <h2>
@@ -48,21 +65,53 @@
         </div>
 
         <div class="row" id="pizza_list">
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail pizza-card">
+            <div class="col-sm-6 col-md-4 pizza-card">
+                <div class="thumbnail">
                     <span class="label label-danger badge-new">Нова</span>
                     <img src="assets/images/pizza_7.jpg">
 
-                    <div class="caption"><h3>Thumbnail label</h3>
-
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta
-                            gravida
-                            at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
-                        <p>
-                            <a href="#" class="btn btn-primary">Button 5</a>
-                            <a href="#" class="btn btn-default">Button 6</a>
-                        </p>
+                    <div class="caption">
+                        <span class="title">Імпреза</span>
+                        <div class="type">М'ясна</div>
+                        <div class="description">
+                            Балик, салямі, курка, сир моцарелла, сир Рокфорд, ананаси, томатна паста, петрушка
+                        </div>
+                        <div class="card-bottom-row">
+                            <div class="col-sm-6 pizza-small">
+                                <div>
+                                    <img class="ui right spaced avatar image" src="assets/images/size-icon.svg">
+                                    <span class="diagonal">30</span>
+                                </div>
+                                <div>
+                                    <img class="ui right spaced avatar image" src="assets/images/weight.svg">
+                                    <span class="gram">370</span>
+                                </div>
+                                <h2>
+                                    <div class="price">
+                                        99
+                                        <div style="font-size: 14px;">грн.</div>
+                                    </div>
+                                </h2>
+                                <a href="#" class="btn btn-warning buy-button-small" role="button">Купити</a>
+                            </div>
+                            <div class="col-sm-6 pizza-big">
+                                <div>
+                                    <img class="ui right spaced avatar image" src="assets/images/size-icon.svg">
+                                    <span class="diagonal">40</span>
+                                </div>
+                                <div>
+                                    <img class="ui right spaced avatar image" src="assets/images/weight.svg">
+                                    <span class="gram">660</span>
+                                </div>
+                                <h2>
+                                    <div class="price">
+                                        169
+                                        <div style="font-size: 14px;">грн.</div>
+                                    </div>
+                                </h2>
+                                <a href="#" class="btn btn-warning buy-button-small" role="button">Купити</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -192,7 +241,24 @@
     </p>
 </footer>
 <div class="top-panel">
-    <span class="btn btn-primary hidden-xs">Ввійти</span>
+    <div class="headers">
+        <div class="top-header">
+            <div class="main-header-top-item phone-number visible-xs-inline-block
+                visible-sm-inline-block visible-lg-inline-block visible-md-inline-block">
+                (044) 222 5 222
+            </div>
+            <div class="main-header-top-item work-days visible-lg-inline-block visible-md-inline-block">
+                24 години/ 7 днів на тиждень
+            </div>
+            <div class="main-header-top-item delivery visible-lg-inline-block">
+                Безкоштовна доставка піци
+            </div>
+            <span class="btn btn-warning hidden-xs sign-in">Ввійти</span>
+        </div>
+        <div class="down-header">
+            <span class="pizza-page hidden-xs">Піца</span>
+        </div>
+    </div>
 </div>
 <div class="right-panel">
     <div class="top-part">
@@ -225,7 +291,6 @@
                 <span class="label order-pizza-count" style="color:black;">1</span>
                 <a class="plus btn btn-xs btn-success btn-circle" href="#">
                     <i class="glyphicon glyphicon-plus icon-white">
-
                     </i>
                 </a>
                 <a class="count-clear btn btn-xs btn-default btn-circle" href="#">
@@ -236,11 +301,11 @@
             </div>
         </div>
 
-        <!--<div class="no-order-text">-->
-            <!--Пусто в холодильнику?-->
-            <!--<br>-->
-            <!--Замовте піцу!-->
-        <!--</div>-->
+        <div class="no-order-text">
+            Пусто в холодильнику?
+            <br>
+            Замовте піцу!
+        </div>
     </div>
     <div class="bottom-part">
         <div class="order-state">
@@ -251,7 +316,7 @@
                 115 грн.
             </span>
             <div class="do-order-button">
-                <button type="button" class="btn btn-warning btn-lg btn-block button-order" disabled >
+                <button type="button" class="btn btn-warning btn-lg btn-block button-order" disabled>
                     Замовити
                 </button>
             </div>
