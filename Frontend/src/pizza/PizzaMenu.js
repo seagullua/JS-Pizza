@@ -18,11 +18,13 @@ function showPizzaList(list) {
 
         var $node = $(html_code);
 
-        $node.find(".buy-big").click(function(){
+        $node.find(".big-button").click(function(){
             PizzaCart.addToCart(pizza, PizzaCart.PizzaSize.Big);
+            PizzaCart.updateOrders();
         });
-        $node.find(".buy-small").click(function(){
+        $node.find(".small-button").click(function(){
             PizzaCart.addToCart(pizza, PizzaCart.PizzaSize.Small);
+            PizzaCart.updateOrders();
         });
 
         $pizza_list.append($node);
