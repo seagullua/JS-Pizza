@@ -4,13 +4,13 @@
 var Templates = require('../Templates');
 var PizzaCart = require('./PizzaCart');
 var Pizza_List = require('../Pizza_List');
-var Title_Names = require('../Title_Names');
 
 //HTML едемент куди будуть додаватися піци
 var $pizza_list = $("#pizza_list");
 var $title = $(".title");
 var $allmenu = $(".all-menu");
 var name = 'Усі піци ';
+var filter = 'all';
 
 function showPizzaList(list) {
     //Очищаємо старі піци в кошику
@@ -69,13 +69,12 @@ function initialiseMenu() {
 }
 
 function updateCountsPizza(list) {
-    var filter;
     $title.html("");
     $allmenu.html("");
     var html_code = Templates.PizzaName({pizza: {title_name: name}});
     var $node = $(html_code);
     var html_code2 = Templates.PizzaCount({pizza: list});
-    var html_code3 = Templates.PizzaMenu();
+    var html_code3 = Templates.PizzaMenu({pizza: {is_active: filter}});
     var $node2 = $(html_code2);
     var $node3 = $(html_code3);
     $title.append($node);
@@ -83,6 +82,7 @@ function updateCountsPizza(list) {
     $allmenu.append($node3);
     $node3.find('.all').click(function () {
         name = 'Усі піци ';
+        filter = 'all';
         showPizzaList(Pizza_List);
     });
     $node3.find('.meat').click(function () {

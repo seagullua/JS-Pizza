@@ -1,8 +1,32 @@
 <ul class="nav nav-pills types">
+    <% if (pizza.is_active === 'all') { %>
     <li class="active all"><a href="#">Усі</a></li>
+    <% } else { %>
+    <li class="all"><a href="#">Усі</a></li>
+    <% } %>
+    <% if (pizza.is_active === 'meat') { %>
+    <li class="active meat"><a href="#">М'ясні</a></li>
+    <% } else { %>
     <li class="meat"><a href="#">М'ясні</a></li>
+    <% } %>
+    <% if (pizza.is_active === 'pineapple') { %>
+    <li class="active pineapple"><a href="#">З ананасами</a></li>
+    <% } else { %>
     <li class="pineapple"><a href="#">З ананасами</a></li>
+    <% } %>
+    <% if (pizza.is_active === 'mushroom') { %>
+    <li class="active mushroom"><a href="#">З грибами</a></li>
+    <% } else { %>
     <li class="mushroom"><a href="#">З грибами</a></li>
+    <% } %>
+    <% if (pizza.is_active === 'ocean') { %>
+    <li class="active ocean"><a href="#">З морепродуктами</a></li>
+    <% } else { %>
     <li class="ocean"><a href="#">З морепродуктами</a></li>
+    <% } %>
+    <% if (pizza.is_active === 'vega') { %>
+    <li class="active vega"><a href="#">Вега</a></li>
+    <% } else { %>
     <li class="vega"><a href="#">Вега</a></li>
+    <% } %>
 </ul>

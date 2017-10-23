@@ -2,6 +2,7 @@
  * Created by chaika on 02.02.16.
  */
 var Templates = require('../Templates');
+var Storage = require('../LocalStorage');
 
 //Перелік розмірів піци
 var PizzaSize = {
@@ -11,6 +12,7 @@ var PizzaSize = {
 
 //Змінна в якій зберігаються перелік піц в кошику
 var Cart = [];
+var orders = {};
 
 //HTML едемент куди будуть додаватися піци
 var $cart = $("#cart");
@@ -72,7 +74,7 @@ function initialiseCart() {
     //Фукнція віпрацьвуватиме при завантаженні сторінки
     //Тут можна наприклад, зчитати вміст корзини який збережено в Local Storage то показати його
     //TODO: ...
-
+    getFromStorage();
     updateCart();
 }
 
@@ -128,6 +130,7 @@ function updateCart() {
     updateOrders();
     genSum();
     Cart.forEach(showOnePizzaInCart);
+    setToStorage();
 }
 
 function updateOrders() {
@@ -154,15 +157,26 @@ function emptyCart() {
 }
 
 function genSum() {
-    var html_code = Templates.GeneralSum();
-    var $node = $(html_code);
     var sum = 0;
     $bottom.html("");
     for (var i = 0; i < Cart.length; i++) {
         sum += Cart[i].price;
     }
-    $node.find('#bottom-h3').text(sum + " грн");
-    $bottom.prepend($node);
+    if (sum != 0) {
+        var html_code = Templates.GeneralSum();
+        var $node = $(html_code);
+        $node.find('#bottom-h3').text(sum + " грн");
+        $bottom.prepend($node);
+    }
+}
+
+function setToStorage() {
+    orders = getPizzaInCart();
+    Storage.set('cart', orders);
+}
+
+function getFromStorage() {
+    Cart = Storage.get('cart');
 }
 
 exports.removeFromCart = removeFromCart;
