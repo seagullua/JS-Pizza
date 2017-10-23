@@ -15,6 +15,7 @@ var Cart = [];
 //HTML едемент куди будуть додаватися піци
 var $cart = $("#cart");
 var $top = $('.top-part');
+var $bottom = $('.sum');
 
 function addToCart(pizza, size) {
     //Додавання однієї піци в кошик покупок
@@ -125,6 +126,7 @@ function updateCart() {
 
     emptyCart();
     updateOrders();
+    genSum();
     Cart.forEach(showOnePizzaInCart);
 }
 
@@ -145,9 +147,22 @@ function emptyCart() {
     var $node = $(html_code);
     if (Cart.length === 0) {
         $cart.prepend($node);
+        $bottom.html("");
     } else {
         $cart.find($node).remove();
     }
+}
+
+function genSum() {
+    var html_code = Templates.GeneralSum();
+    var $node = $(html_code);
+    var sum = 0;
+    $bottom.html("");
+    for (var i = 0; i < Cart.length; i++) {
+        sum += Cart[i].price;
+    }
+    $node.find('#bottom-h3').text(sum + " грн");
+    $bottom.prepend($node);
 }
 
 exports.removeFromCart = removeFromCart;

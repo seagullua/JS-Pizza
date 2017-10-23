@@ -4,9 +4,13 @@
 var Templates = require('../Templates');
 var PizzaCart = require('./PizzaCart');
 var Pizza_List = require('../Pizza_List');
+var Title_Names = require('../Title_Names');
 
 //HTML едемент куди будуть додаватися піци
 var $pizza_list = $("#pizza_list");
+var $title = $(".title");
+var $allmenu = $(".all-menu");
+var name = 'Усі піци ';
 
 function showPizzaList(list) {
     //Очищаємо старі піци в кошику
@@ -31,17 +35,28 @@ function showPizzaList(list) {
     }
 
     list.forEach(showOnePizza);
+    updateCountsPizza(list);
 }
 
 function filterPizza(filter) {
     //Масив куди потраплять піци які треба показати
     var pizza_shown = [];
+    var a;
 
     Pizza_List.forEach(function(pizza){
         //Якщо піка відповідає фільтру
         //pizza_shown.push(pizza);
-
         //TODO: зробити фільтри
+        if (filter !== 'vega') {
+            a = pizza['content'][filter];
+            if (a !== undefined) {
+                pizza_shown.push(pizza);
+            }
+        } else {
+            if (pizza.type === 'Вега піца') {
+                pizza_shown.push(pizza);
+            }
+        }
     });
 
     //Показати відфільтровані піци
@@ -50,7 +65,51 @@ function filterPizza(filter) {
 
 function initialiseMenu() {
     //Показуємо усі піци
-    showPizzaList(Pizza_List)
+    showPizzaList(Pizza_List);
+}
+
+function updateCountsPizza(list) {
+    var filter;
+    $title.html("");
+    $allmenu.html("");
+    var html_code = Templates.PizzaName({pizza: {title_name: name}});
+    var $node = $(html_code);
+    var html_code2 = Templates.PizzaCount({pizza: list});
+    var html_code3 = Templates.PizzaMenu();
+    var $node2 = $(html_code2);
+    var $node3 = $(html_code3);
+    $title.append($node);
+    $('.menu-name').append($node2);
+    $allmenu.append($node3);
+    $node3.find('.all').click(function () {
+        name = 'Усі піци ';
+        showPizzaList(Pizza_List);
+    });
+    $node3.find('.meat').click(function () {
+        name = 'М\'ясні піци ';
+        filter = 'meat';
+        filterPizza(filter);
+    });
+    $node3.find('.pineapple').click(function () {
+        name = 'Піци з ананасами ';
+        filter = 'pineapple';
+        filterPizza(filter);
+    });
+    $node3.find('.mushroom').click(function () {
+        name = 'Піци з грибами ';
+        filter = 'mushroom';
+        filterPizza(filter);
+    });
+    $node3.find('.ocean').click(function () {
+        name = 'Піци з морепродуктами ';
+        filter = 'ocean';
+        filterPizza(filter);
+    });
+    $node3.find('.vega').click(function () {
+        name = 'Вегетеріанські піци ';
+        filter = 'vega';
+        filterPizza(filter);
+    });
 }
 
 exports.filterPizza = filterPizza;

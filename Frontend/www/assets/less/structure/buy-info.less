@@ -124,27 +124,25 @@
 }
 
 #bottom-h4 {
-  padding-top: 5px;
+  margin-top: 17px;
   margin-left: 10px;
 }
 
 #bottom-h3 {
+  margin-top: 15px;
   font-size: 20px;
   font-weight: bold;
 }
 
 .lastcol {
-  position: relative;
+  position: fixed;
+  bottom: 20px;
   height: 35px;
 }
 
 .button {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
+  margin-top: -5px;
+  margin-left: 20px;
   width: 250px;
   font-size: 16px;
   box-shadow: @buttonShadow;
@@ -153,4 +151,10 @@
 .empty_cart {
   width: 100%;
   text-align: center;
+  padding: 50px;
+  opacity: 0.75;
+}
+
+.empty_cart > h5 {
+  margin: 0;
 }

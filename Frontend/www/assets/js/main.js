@@ -190,8 +190,20 @@ exports.PizzaCart_OneItem = ejs.compile("<% if (size == 'big_size') {\n    var s
 
 exports.Orders = ejs.compile("<div class=\"row\">\r\n    <div class=\"col-xs-7\">\r\n        <h3 id=\"top-h3\">Замовлення <span class=\"badge oval\"></span> </h3>\r\n    </div>\r\n    <div class=\"col-xs-5\">\r\n        <p id=\"top-p\">Очистити замовлення</p>\r\n    </div>\r\n</div>");
 
-exports.EmptyCart = ejs.compile("<div class=\"empty_cart\">\r\n    <h4>Пусто в холодильнику?</h4>\r\n    <h4>Замовте піцу!</h4>\r\n</div>");
-},{"ejs":7}],3:[function(require,module,exports){
+exports.EmptyCart = ejs.compile("<div class=\"empty_cart\">\r\n    <h5>Пусто в холодильнику?</h5>\r\n    <h5>Замовте піцу!</h5>\r\n</div>");
+
+exports.GeneralSum = ejs.compile("<div class=\"col-xs-7\">\r\n    <h4 id=\"bottom-h4\">Сума замовлення</h4>\r\n</div>\r\n<div class=\"col-xs-5\">\r\n    <h3 id=\"bottom-h3\"></h3>\r\n</div>");
+
+exports.PizzaCount = ejs.compile("<span class=\"badge oval\"><%= pizza.length%></span>");
+
+exports.PizzaName = ejs.compile("<h2 class=\"menu-name\"><%= pizza.title_name%></h2>");
+
+exports.PizzaMenu = ejs.compile("<ul class=\"nav nav-pills types\">\r\n    <li class=\"active all\"><a href=\"#\">Усі</a></li>\r\n    <li class=\"meat\"><a href=\"#\">М'ясні</a></li>\r\n    <li class=\"pineapple\"><a href=\"#\">З ананасами</a></li>\r\n    <li class=\"mushroom\"><a href=\"#\">З грибами</a></li>\r\n    <li class=\"ocean\"><a href=\"#\">З морепродуктами</a></li>\r\n    <li class=\"vega\"><a href=\"#\">Вега</a></li>\r\n</ul>");
+},{"ejs":8}],3:[function(require,module,exports){
+var names = [{title_name: 'all'}];
+
+module.exports = names;
+},{}],4:[function(require,module,exports){
 /**
  * Created by chaika on 25.01.16.
  */
@@ -204,7 +216,7 @@ $(function(){
     PizzaCart.initialiseCart();
     PizzaMenu.initialiseMenu();
 });
-},{"./Pizza_List":1,"./pizza/PizzaCart":4,"./pizza/PizzaMenu":5}],4:[function(require,module,exports){
+},{"./Pizza_List":1,"./pizza/PizzaCart":5,"./pizza/PizzaMenu":6}],5:[function(require,module,exports){
 /**
  * Created by chaika on 02.02.16.
  */
@@ -222,6 +234,7 @@ var Cart = [];
 //HTML едемент куди будуть додаватися піци
 var $cart = $("#cart");
 var $top = $('.top-part');
+var $bottom = $('.sum');
 
 function addToCart(pizza, size) {
     //Додавання однієї піци в кошик покупок
@@ -332,6 +345,7 @@ function updateCart() {
 
     emptyCart();
     updateOrders();
+    genSum();
     Cart.forEach(showOnePizzaInCart);
 }
 
@@ -352,9 +366,22 @@ function emptyCart() {
     var $node = $(html_code);
     if (Cart.length === 0) {
         $cart.prepend($node);
+        $bottom.html("");
     } else {
         $cart.find($node).remove();
     }
+}
+
+function genSum() {
+    var html_code = Templates.GeneralSum();
+    var $node = $(html_code);
+    var sum = 0;
+    $bottom.html("");
+    for (var i = 0; i < Cart.length; i++) {
+        sum += Cart[i].price;
+    }
+    $node.find('#bottom-h3').text(sum + " грн");
+    $bottom.prepend($node);
 }
 
 exports.removeFromCart = removeFromCart;
@@ -365,16 +392,20 @@ exports.initialiseCart = initialiseCart;
 exports.updateOrders = updateOrders;
 
 exports.PizzaSize = PizzaSize;
-},{"../Templates":2}],5:[function(require,module,exports){
+},{"../Templates":2}],6:[function(require,module,exports){
 /**
  * Created by chaika on 02.02.16.
  */
 var Templates = require('../Templates');
 var PizzaCart = require('./PizzaCart');
 var Pizza_List = require('../Pizza_List');
+var Title_Names = require('../Title_Names');
 
 //HTML едемент куди будуть додаватися піци
 var $pizza_list = $("#pizza_list");
+var $title = $(".title");
+var $allmenu = $(".all-menu");
+var name = 'Усі піци ';
 
 function showPizzaList(list) {
     //Очищаємо старі піци в кошику
@@ -399,17 +430,28 @@ function showPizzaList(list) {
     }
 
     list.forEach(showOnePizza);
+    updateCountsPizza(list);
 }
 
 function filterPizza(filter) {
     //Масив куди потраплять піци які треба показати
     var pizza_shown = [];
+    var a;
 
     Pizza_List.forEach(function(pizza){
         //Якщо піка відповідає фільтру
         //pizza_shown.push(pizza);
-
         //TODO: зробити фільтри
+        if (filter !== 'vega') {
+            a = pizza['content'][filter];
+            if (a !== undefined) {
+                pizza_shown.push(pizza);
+            }
+        } else {
+            if (pizza.type === 'Вега піца') {
+                pizza_shown.push(pizza);
+            }
+        }
     });
 
     //Показати відфільтровані піци
@@ -418,14 +460,58 @@ function filterPizza(filter) {
 
 function initialiseMenu() {
     //Показуємо усі піци
-    showPizzaList(Pizza_List)
+    showPizzaList(Pizza_List);
+}
+
+function updateCountsPizza(list) {
+    var filter;
+    $title.html("");
+    $allmenu.html("");
+    var html_code = Templates.PizzaName({pizza: {title_name: name}});
+    var $node = $(html_code);
+    var html_code2 = Templates.PizzaCount({pizza: list});
+    var html_code3 = Templates.PizzaMenu();
+    var $node2 = $(html_code2);
+    var $node3 = $(html_code3);
+    $title.append($node);
+    $('.menu-name').append($node2);
+    $allmenu.append($node3);
+    $node3.find('.all').click(function () {
+        name = 'Усі піци ';
+        showPizzaList(Pizza_List);
+    });
+    $node3.find('.meat').click(function () {
+        name = 'М\'ясні піци ';
+        filter = 'meat';
+        filterPizza(filter);
+    });
+    $node3.find('.pineapple').click(function () {
+        name = 'Піци з ананасами ';
+        filter = 'pineapple';
+        filterPizza(filter);
+    });
+    $node3.find('.mushroom').click(function () {
+        name = 'Піци з грибами ';
+        filter = 'mushroom';
+        filterPizza(filter);
+    });
+    $node3.find('.ocean').click(function () {
+        name = 'Піци з морепродуктами ';
+        filter = 'ocean';
+        filterPizza(filter);
+    });
+    $node3.find('.vega').click(function () {
+        name = 'Вегетеріанські піци ';
+        filter = 'vega';
+        filterPizza(filter);
+    });
 }
 
 exports.filterPizza = filterPizza;
 exports.initialiseMenu = initialiseMenu;
-},{"../Pizza_List":1,"../Templates":2,"./PizzaCart":4}],6:[function(require,module,exports){
+},{"../Pizza_List":1,"../Templates":2,"../Title_Names":3,"./PizzaCart":5}],7:[function(require,module,exports){
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /*
  * EJS Embedded JavaScript templates
  * Copyright 2112 Matthew Eernisse (mde@fleegix.org)
@@ -1293,7 +1379,7 @@ if (typeof window != 'undefined') {
   window.ejs = exports;
 }
 
-},{"../package.json":9,"./utils":8,"fs":6,"path":10}],8:[function(require,module,exports){
+},{"../package.json":10,"./utils":9,"fs":7,"path":11}],9:[function(require,module,exports){
 /*
  * EJS Embedded JavaScript templates
  * Copyright 2112 Matthew Eernisse (mde@fleegix.org)
@@ -1459,7 +1545,7 @@ exports.cache = {
   }
 };
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 module.exports={
   "_args": [
     [
@@ -1575,7 +1661,7 @@ module.exports={
   "version": "2.5.7"
 }
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -1803,7 +1889,7 @@ var substr = 'ab'.substr(-1) === 'b'
 ;
 
 }).call(this,require('_process'))
-},{"_process":11}],11:[function(require,module,exports){
+},{"_process":12}],12:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -1989,4 +2075,4 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}]},{},[3]);
+},{}]},{},[4]);
