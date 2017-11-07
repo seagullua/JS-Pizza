@@ -18,6 +18,7 @@ var orders = {};
 var $cart = $("#cart");
 var $top = $('.top-part');
 var $bottom = $('.sum');
+var $bottom_part = $('.bottom-part');
 
 function addToCart(pizza, size) {
     //Додавання однієї піци в кошик покупок
@@ -105,7 +106,7 @@ function updateCart() {
 
         $node.find(".minus").click(function(){
             //Зменшуємо кількість замовлених піц
-            if (cart_item.quantity == 1) {
+            if (cart_item.quantity === 1) {
                 $node.remove();
                 removeFromCart(cart_item);
                 updateCart();
@@ -151,8 +152,12 @@ function emptyCart() {
     if (Cart.length === 0) {
         $cart.prepend($node);
         $bottom.html("");
+        $bottom_part.find('.lastcol').css('cursor', 'not-allowed');
+        $bottom_part.find('a.order_button').css('pointer-events', 'none');
     } else {
         $cart.find($node).remove();
+        $bottom_part.find('.lastcol').css('cursor', 'auto');
+        $bottom_part.find('a.order_button').css('pointer-events', 'all');
     }
 }
 

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pizza</title>
+    <!-- Bootsrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- LESS основний файл -->
+    <link rel="stylesheet/less" type="text/css" href="assets/less/main_order.less" />
+    <!-- LESS JavaScript компілятор -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+</head>
+<body>
+<div class="top-panel">
+    <div class="row top-info">
+        <div class="col-lg-3 visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block number">
+            (044) 222 5 222
+        </div>
+        <div class="col-lg-3 visible-lg-inline-block visible-md-inline-block time-work">
+            24 години/7 днів на тиждень
+        </div>
+        <div class="col-lg-3 visible-lg-inline-block price-deliver">
+            Безкоштовна доставка піци
+        </div>
+        <span class="btn btn-warning enter">Ввійти</span>
+    </div>
+    <div class="pizza-link">
+        <a class="hidden-xs" href="index.html">Піца</a>
+    </div>
+    <div class="top-discount">
+        <a href="index.html">PIZZA</a>
+        KMA
+        <img id="discount" src="assets/images/discount.svg">
+    </div>
+</div>
+<div class="buy-info">
+    <div class="top-part">
+    </div>
+    <div id="cart" class="main-part">
+    </div>
+    <div class="bottom-part">
+        <div class="row sum">
+        </div>
+        <div class="col-xs-12 lastcol">
+            <a href="index.html" class="order_button" ><span class="btn btn-default button">Редагувати замовлення</span></a>
+        </div>
+    </div>
+</div>
+<div class="main-pizza">
+    <div class="inner-container">
+        <div class="contact-form">
+            <div class="form">
+                <h3>1. Контактні дані</h3>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-7">
+                    <div class="col-xs-12">
+                        <form class="form-horizontal">
+                            <div class="form-group form-group-md name-form">
+                                <label class="col-xs-2 control-label">Ім'я</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control name" id="inputName" placeholder="Ім'я Фамілія" aria-describedby="helpName">
+                                    <span id="helpName" class="help-block">Введіть тільки власне ім’я, без цифр</span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-xs-12">
+                        <form class="form-horizontal">
+                            <div class="form-group form-group-md phone-form">
+                                <label class="col-xs-2 control-label">Телефон</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control phone" id="inputPhone" placeholder="+380632267333">
+                                    <span id="helpPhone" class="help-block">Введіть номер телефону у форматі +380 або почніть з 0</span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-xs-12">
+                        <form class="form-horizontal">
+                            <div class="form-group form-group-md">
+                                <label class="col-xs-2 control-label">Адрес</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="exampleInputAdress" placeholder="Київ, вул. Спаська, 2">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-5">
+                    <div class="bs-callout bs-callout-warning">
+                        <h4>Інформація про замовлення</h4>
+                        <p><strong>Приблизний час доставки: </strong>невідомий</p>
+                        <p><strong>Адреса доставки: </strong>невідома</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 accept">
+                    <span class="btn btn-warning accept-button">Далі<span class="glyphicon glyphicon-chevron-right"></span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bottom-discount">
+    <div class="title-discount">цього тижня на все</div>
+    <div class="content-discount">-20%</div>
+    <img id="discountsecond" src="assets/images/discount.svg">
+</div>
+<div class="footer">
+    <p>Pizza.22 - практичний проект в межах курсу JavaScript в Києво-Могилянській Академії</p>
+    <p>Доставка піци не здійснюється</p>
+</div>
+<!-- jQuery JavaScript -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<!--Bootsrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<!--Own JavaScript -->
+<script type="text/javascript" src="assets/js/main.js"></script>
+<script type="text/javascript" src="assets/js/main_order.js"></script>
+</body>
+</html>
