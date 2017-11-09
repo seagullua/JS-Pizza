@@ -18,10 +18,10 @@ function showPizzaList(list) {
 
         var $node = $(html_code);
 
-        $node.find(".buy-big").click(function(){
+        $node.find(".bb").click(function(){
             PizzaCart.addToCart(pizza, PizzaCart.PizzaSize.Big);
         });
-        $node.find(".buy-small").click(function(){
+        $node.find(".bs").click(function(){
             PizzaCart.addToCart(pizza, PizzaCart.PizzaSize.Small);
         });
 
@@ -45,6 +45,7 @@ function filterPizza(filter) {
     //Показати відфільтровані піци
     showPizzaList(pizza_shown);
 }
+
 
 function initialiseMenu() {
     //Показуємо усі піци

@@ -15,7 +15,7 @@ var pizza_info = [
             pineapple: ['ананаси'],
             additional: ['томатна паста', 'петрушка']
         },
-        small_size:{
+        small_size: {
             weight: 370,
             size: 30,
             price: 99
