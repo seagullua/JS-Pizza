@@ -39,7 +39,15 @@ function filterPizza(filter) {
         //Якщо піка відповідає фільтру
         //pizza_shown.push(pizza);
 
+        if (pizza.type == filter){
+            pizza_shown.push(pizza);
+        }
+
         //TODO: зробити фільтри
+        var $alltypes = $(".pizza-all-types");
+        $alltypes.find(".button-all").click(function () {
+
+        })
     });
 
     //Показати відфільтровані піци

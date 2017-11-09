@@ -184,7 +184,7 @@ module.exports = pizza_info;
 var ejs = require('ejs');
 
 
-exports.PizzaMenu_OneItem = ejs.compile("<%\r\n\r\nfunction getIngredientsArray(pizza) {\r\n    //Отримує вміст піци\r\n    var content = pizza.content;\r\n    var result = [];\r\n\r\n    //Object.keys повертає масив ключів в об’єкті JavaScript\r\n\r\n    Object.keys(content).forEach(function(key){\r\n        //a.concat(b) створює спільний масив із масивів a та b\r\n        result = result.concat(content[key]);\r\n    });\r\n\r\n    return result;\r\n}\r\n\r\n   %>\r\n<div class=\"col-md-6 col-lg-4 pizza-card\">\r\n    <div class=\"thumbnail\">\r\n\r\n        <% if(pizza.is_new) { %>\r\n        <span class=\"label label-danger badge-new\">Нова</span>\r\n        <% } else if(pizza.is_popular) {%>\r\n        <span class=\"label label-success badge-new\">Популярна</span>\r\n        <% } %>\r\n        <img class=\"pizza-card-icon\" src=\"<%= pizza.icon %>\">\r\n\r\n        <div class=\"caption\">\r\n            <span class=\"title\"><%= pizza.title %></span>\r\n            <div class=\"type\"><%= pizza.type %></div>\r\n            <div class=\"description\">\r\n                <%= getIngredientsArray(pizza).join(\", \") %>\r\n            </div>\r\n            <div class=\"row\">\r\n                <% if(pizza.small_size) { %>\r\n                <div class=\"col-sm-6 pizza-small\">\r\n                    <div>\r\n                        <img class=\"ui right spaced avatar image\" src=\"assets/images/size-icon.svg\">\r\n                        <span class=\"diagonal\"><%= pizza.small_size.size %></span>\r\n                    </div>\r\n                    <div>\r\n                        <img class=\"ui right spaced avatar image\" src=\"assets/images/weight.svg\">\r\n                        <span class=\"gram\"><%= pizza.small_size.weight %></span>\r\n                    </div>\r\n                    <h2>\r\n                        <div class=\"price\">\r\n                            <%= pizza.small_size.price %>\r\n                            <div style=\"font-size: 14px;\">грн.</div>\r\n                        </div>\r\n                    </h2>\r\n                    <a class=\"btn btn-warning buy-button-small bs\" role=\"button\">Купити</a>\r\n                </div>\r\n                <%}%>\r\n                <% if(pizza.big_size) { %>\r\n                <div class=\"col-sm-6 pizza-big\">\r\n                    <div>\r\n                        <img class=\"ui right spaced avatar image\" src=\"assets/images/size-icon.svg\">\r\n                        <span class=\"diagonal\"><%= pizza.big_size.size %></span>\r\n                    </div>\r\n                    <div>\r\n                        <img class=\"ui right spaced avatar image\" src=\"assets/images/weight.svg\">\r\n                        <span class=\"gram\"><%= pizza.big_size.weight %></span>\r\n                    </div>\r\n                    <h2>\r\n                        <div class=\"price\">\r\n                            <%= pizza.big_size.price %>\r\n                            <div style=\"font-size: 14px;\">грн.</div>\r\n                        </div>\r\n                    </h2>\r\n                    <a class=\"btn btn-warning buy-button-small bb\" role=\"button\">Купити</a>\r\n                </div>\r\n                <%}%>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>");
+exports.PizzaMenu_OneItem = ejs.compile("<%\r\n\r\nfunction getIngredientsArray(pizza) {\r\n    //Отримує вміст піци\r\n    var content = pizza.content;\r\n    var result = [];\r\n\r\n    //Object.keys повертає масив ключів в об’єкті JavaScript\r\n\r\n    Object.keys(content).forEach(function(key){\r\n        //a.concat(b) створює спільний масив із масивів a та b\r\n        result = result.concat(content[key]);\r\n    });\r\n\r\n    return result;\r\n}\r\n\r\n   %>\r\n<div class=\"col-md-6 col-lg-4 pizza-card\">\r\n    <div class=\"thumbnail\">\r\n\r\n        <% if(pizza.is_new) { %>\r\n        <span class=\"label label-danger badge-new\">Нова</span>\r\n        <% } else if(pizza.is_popular) {%>\r\n        <span class=\"label label-success badge-new\">Популярна</span>\r\n        <% } %>\r\n        <img class=\"pizza-card-icon\" src=\"<%= pizza.icon %>\">\r\n\r\n        <div class=\"caption\">\r\n            <span class=\"title\"><%= pizza.title %></span>\r\n            <div class=\"type\"><%= pizza.type %></div>\r\n            <div class=\"description\">\r\n                <%= getIngredientsArray(pizza).join(\", \") %>\r\n            </div>\r\n            <div class=\"row\">\r\n                <%if (pizza.small_size && pizza.big_size){%>\r\n                <div class=\"col-sm-6 pizza-small\">\r\n                    <div>\r\n                        <img class=\"ui right spaced avatar image\" src=\"assets/images/size-icon.svg\">\r\n                        <span class=\"diagonal\"><%= pizza.small_size.size %></span>\r\n                    </div>\r\n                    <div>\r\n                        <img class=\"ui right spaced avatar image\" src=\"assets/images/weight.svg\">\r\n                        <span class=\"gram\"><%= pizza.small_size.weight %></span>\r\n                    </div>\r\n                    <h2>\r\n                        <div class=\"price\">\r\n                            <%= pizza.small_size.price %>\r\n                            <div style=\"font-size: 14px;\">грн.</div>\r\n                        </div>\r\n                    </h2>\r\n                    <a class=\"btn btn-warning buy-button-small bs\" role=\"button\">Купити</a>\r\n                </div>\r\n                <div class=\"col-sm-6 pizza-big\">\r\n                    <div>\r\n                        <img class=\"ui right spaced avatar image\" src=\"assets/images/size-icon.svg\">\r\n                        <span class=\"diagonal\"><%= pizza.big_size.size %></span>\r\n                    </div>\r\n                    <div>\r\n                        <img class=\"ui right spaced avatar image\" src=\"assets/images/weight.svg\">\r\n                        <span class=\"gram\"><%= pizza.big_size.weight %></span>\r\n                    </div>\r\n                    <h2>\r\n                        <div class=\"price\">\r\n                            <%= pizza.big_size.price %>\r\n                            <div style=\"font-size: 14px;\">грн.</div>\r\n                        </div>\r\n                    </h2>\r\n                    <a class=\"btn btn-warning buy-button-small bb\" role=\"button\">Купити</a>\r\n                </div>\r\n                <% } else if (pizza.small_size) {%>\r\n                <div class=\"col-sm-12 pizza-small\">\r\n                    <div>\r\n                        <img class=\"ui right spaced avatar image\" src=\"assets/images/size-icon.svg\">\r\n                        <span class=\"diagonal\"><%= pizza.small_size.size %></span>\r\n                    </div>\r\n                    <div>\r\n                        <img class=\"ui right spaced avatar image\" src=\"assets/images/weight.svg\">\r\n                        <span class=\"gram\"><%= pizza.small_size.weight %></span>\r\n                    </div>\r\n                    <h2>\r\n                        <div class=\"price\">\r\n                            <%= pizza.small_size.price %>\r\n                            <div style=\"font-size: 14px;\">грн.</div>\r\n                        </div>\r\n                    </h2>\r\n                    <a class=\"btn btn-warning buy-button-small bs\" role=\"button\">Купити</a>\r\n                </div>\r\n                <% } else { %>\r\n                <div class=\"col-sm-12 pizza-big\">\r\n                    <div>\r\n                        <img class=\"ui right spaced avatar image\" src=\"assets/images/size-icon.svg\">\r\n                        <span class=\"diagonal\"><%= pizza.big_size.size %></span>\r\n                    </div>\r\n                    <div>\r\n                        <img class=\"ui right spaced avatar image\" src=\"assets/images/weight.svg\">\r\n                        <span class=\"gram\"><%= pizza.big_size.weight %></span>\r\n                    </div>\r\n                    <h2>\r\n                        <div class=\"price\">\r\n                            <%= pizza.big_size.price %>\r\n                            <div style=\"font-size: 14px;\">грн.</div>\r\n                        </div>\r\n                    </h2>\r\n                    <a class=\"btn btn-warning buy-button-small bb\" role=\"button\">Купити</a>\r\n                </div>\r\n                <% } %>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>");
 
 exports.PizzaCart_OneItem = ejs.compile("<%\r\nfunction someFunction(pizza) {\r\n\r\n}\r\n\r\n%>\r\n\r\n\r\n<div class=\"order-one ng-scope\">\r\n    <img class=\"img-aside pizza-icon\" alt=\"Піца\" src=\"<%= pizza.icon %>\">\r\n\r\n    <p class=\"bold mb10 ng-scope\">\r\n    <% if(size == \"small_size\"){ %>\r\n        <span class=\"order-title\"><%= pizza.title %> (Мала)</span>\r\n    <% }else { %>\r\n        <span class=\"order-title\"><%= pizza.title %> (Велика)</span>\r\n    <% } %>\r\n    </p>\r\n    <div class=\"order-text\">\r\n        <img class=\"diagonal-image\" src=\"assets/images/size-icon.svg\">\r\n        <span class=\"diagonal\"><%= pizza[size].size %></span>\r\n        <img class=\"gram-image\" src=\"assets/images/weight.svg\">\r\n        <span class=\"gram\"><%= pizza[size].weight %></span>\r\n    </div>\r\n    <div class=\"price-box\">\r\n        <span class=\"price\"><%= pizza[size].price %> грн.</span>\r\n        <a class=\"minus btn btn-xs btn-danger btn-circle\">\r\n            <i class=\"glyphicon glyphicon-minus icon-white\">\r\n            </i>\r\n        </a>\r\n        <span class=\"label order-pizza-count\" style=\"color:black;\"><%= quantity %></span>\r\n        <a class=\"plus btn btn-xs btn-success btn-circle\" >\r\n            <i class=\"glyphicon glyphicon-plus icon-white\">\r\n            </i>\r\n        </a>\r\n        <a class=\"count-clear btn btn-xs btn-default btn-circle\" >\r\n            <i class=\"glyphicon glyphicon-remove icon-white\">\r\n            </i>\r\n        </a>\r\n    </div>\r\n</div>");
 
@@ -228,19 +228,20 @@ var $cart = $("#cart");
 function addToCart(pizza, size) {
     //Додавання однієї піци в кошик покупок
     function checkIfPresent() {
-        for (var i = 0; i < Cart.length; i++){
-            if(Cart[i].pizza == pizza&&size==Cart[i].size) return i;
+        for (var i = 0; i < Cart.length; i++) {
+            if (Cart[i].pizza == pizza && size == Cart[i].size) return i;
         }
         return -1;
     }
+
     var check = checkIfPresent();
-    if (check===-1){
+    if (check === -1) {
         Cart.push({
             pizza: pizza,
             size: size,
             quantity: 1
         });
-    }else{
+    } else {
         Cart[check].quantity++;
     }
 
@@ -248,19 +249,18 @@ function addToCart(pizza, size) {
     updateCart();
 }
 
-function removeFromCart(cart_item) {
-    //Видалити піцу з кошика
-    //TODO: треба зробити
-  //  Cart[cart_item] = null;
 
-    //Після видалення оновити відображення
+function removeFromCart(cart_item) {
+    Cart.splice(Cart.indexOf(cart_item), 1);
     updateCart();
 }
 
 function clearCart() {
-    Cart = [];
-
-    updateCart();
+    $(".clear-order").click(function () {
+        Cart = [];
+        $(".order-count").text(0);
+        updateCart();
+    });
 }
 
 function initialiseCart() {
@@ -269,9 +269,12 @@ function initialiseCart() {
     //TODO: ...
 
     var saved_cart = Storage.read("cart");
-    if(saved_cart){
+    if (saved_cart) {
         Cart = saved_cart;
     }
+    // else {
+    //     $cart.append($("#no-order"));
+    // }
 
     updateCart();
 }
@@ -286,11 +289,11 @@ function updateCart() {
     //Тут можна наприклад показати оновлений кошик на екрані та зберегти вміт кошика в Local Storage
 
     Storage.write("cart", Cart);
-
     //Очищаємо старі піци в кошику
     $cart.html("");
 
     var total = 0;
+    var one_pizza_sum = 0;
 
     //Онволення однієї піци
     function showOnePizzaInCart(cart_item) {
@@ -301,24 +304,40 @@ function updateCart() {
 
         var $node = $(html_code);
 
-        $node.find(".plus").click(function(){
+        $node.find(".plus").click(function () {
             //Збільшуємо кількість замовлених піц
             cart_item.quantity += 1;
             total += cart_item.pizza[cart_item.size].price;
+            $(".order-count").text(total);
+
+            one_pizza_sum += cart_item.pizza[cart_item.size].price;
+            $(".price").text(one_pizza_sum);
 
             //Оновлюємо відображення
             updateCart();
         });
 
-        $node.find(".minus").click(function(){
+        $node.find(".minus").click(function () {
             //Збільшуємо кількість замовлених піц
-            if (cart_item.quantity == 1){
-        //DELETE CART !!!!!!!!!!!!!!!
-            }else{
+            if (cart_item.quantity == 1) {
+                removeFromCart(cart_item);
+                updateCart();
+            } else {
                 cart_item.quantity -= 1;
                 total -= cart_item.pizza[cart_item.size].price;
+                $(".order-count").text(total);
+
+                one_pizza_sum -= cart_item.pizza[cart_item.size].price;
+                $(".price").text(one_pizza_sum);
                 updateCart();
             }
+        });
+
+        $node.find(".count-clear").click(function () {
+            removeFromCart(cart_item);
+            total -= cart_item.pizza[cart_item.size].price;
+            $(".order-count").text(total);
+            updateCart();
         });
 
         $cart.append($node);
@@ -377,7 +396,15 @@ function filterPizza(filter) {
         //Якщо піка відповідає фільтру
         //pizza_shown.push(pizza);
 
+        if (pizza.type == filter){
+            pizza_shown.push(pizza);
+        }
+
         //TODO: зробити фільтри
+        var $alltypes = $(".pizza-all-types");
+        $alltypes.find(".button-all").click(function () {
+
+        })
     });
 
     //Показати відфільтровані піци
