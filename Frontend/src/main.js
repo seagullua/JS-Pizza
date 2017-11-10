@@ -11,7 +11,16 @@ $(function(){
     PizzaCart.initialiseCart();
     PizzaMenu.initialiseMenu();
 
+    $(".nav-pills li").on("click", function () {
+        $(".nav-pills li").removeClass("active");
+        $(this).addClass("active");
+        var filt = $(this).find('a').data("filter");
+        PizzaMenu.filterPizza(filt);
+    })
+
     $(".clear-cart").click(function () {
         PizzaCart.clearCart();
     });
+
+
 });

@@ -20,7 +20,7 @@ function addToCart(pizza, size) {
     //Додавання однієї піци в кошик покупок
     function checkIfPresent() {
         for (var i = 0; i < Cart.length; i++) {
-            if (Cart[i].pizza == pizza && size == Cart[i].size) return i;
+            if (Cart[i].pizza.id == pizza.id && size == Cart[i].size) return i;
         }
         return -1;
     }
@@ -63,9 +63,6 @@ function initialiseCart() {
     if (saved_cart) {
         Cart = saved_cart;
     }
-    // else {
-    //     $cart.append($("#no-order"));
-    // }
 
     updateCart();
 }
@@ -85,23 +82,26 @@ function updateCart() {
 
     var total = 0;
     var one_pizza_sum = 0;
+    var number_of_pizzas = 0;
 
     //Онволення однієї піци
     function showOnePizzaInCart(cart_item) {
         var html_code = Templates.PizzaCart_OneItem(cart_item);
 
-        total += cart_item.pizza[cart_item.size].price;
-        $(".order-count").text(total); // !!!!!!!!!!!!!!!!!!!
+        //total += cart_item.pizza[cart_item.size].price;// !!!!!!!!!!!!!!!!!!!
+
+        number_of_pizzas +=1;
+        $(".order-count").text(number_of_pizzas);
 
         var $node = $(html_code);
 
         $node.find(".plus").click(function () {
             //Збільшуємо кількість замовлених піц
             cart_item.quantity += 1;
-            total += cart_item.pizza[cart_item.size].price;
-            $(".order-count").text(total);
+           // total += cart_item.pizza[cart_item.size].price;
+           // $(".order-count").text(total);
 
-            one_pizza_sum += cart_item.pizza[cart_item.size].price;
+            one_pizza_sum = cart_item.pizza[cart_item.size].quantity * cart_item.pizza[cart_item.size].price;
             $(".price").text(one_pizza_sum);
 
             //Оновлюємо відображення
@@ -110,13 +110,13 @@ function updateCart() {
 
         $node.find(".minus").click(function () {
             //Збільшуємо кількість замовлених піц
-            if (cart_item.quantity == 1) {
+            if (cart_item.quantity === 1) {
                 removeFromCart(cart_item);
                 updateCart();
             } else {
                 cart_item.quantity -= 1;
-                total -= cart_item.pizza[cart_item.size].price;
-                $(".order-count").text(total);
+                //total -= cart_item.pizza[cart_item.size].price;
+                //$(".order-count").text(total);
 
                 one_pizza_sum -= cart_item.pizza[cart_item.size].price;
                 $(".price").text(one_pizza_sum);
@@ -126,8 +126,8 @@ function updateCart() {
 
         $node.find(".count-clear").click(function () {
             removeFromCart(cart_item);
-            total -= cart_item.pizza[cart_item.size].price;
-            $(".order-count").text(total);
+            //total -= cart_item.pizza[cart_item.size].price;
+            //$(".order-count").text(total);
             updateCart();
         });
 

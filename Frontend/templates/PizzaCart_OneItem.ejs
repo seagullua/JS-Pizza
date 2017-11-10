@@ -10,7 +10,7 @@ function someFunction(pizza) {
     <img class="img-aside pizza-icon" alt="Піца" src="<%= pizza.icon %>">
 
     <p class="bold mb10 ng-scope">
-    <% if(size == "small_size"){ %>
+    <% if(pizza.size == "small_size"){ %>
         <span class="order-title"><%= pizza.title %> (Мала)</span>
     <% }else { %>
         <span class="order-title"><%= pizza.title %> (Велика)</span>
@@ -23,7 +23,7 @@ function someFunction(pizza) {
         <span class="gram"><%= pizza[size].weight %></span>
     </div>
     <div class="price-box">
-        <span class="price"><%= pizza[size].price %> грн.</span>
+        <span class="price"><%= pizza[size].price*quantity%>  грн.</span>
         <a class="minus btn btn-xs btn-danger btn-circle">
             <i class="glyphicon glyphicon-minus icon-white">
             </i>
