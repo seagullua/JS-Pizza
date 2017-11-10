@@ -57,7 +57,6 @@ function clearCart() {
 function initialiseCart() {
     //Фукнція віпрацьвуватиме при завантаженні сторінки
     //Тут можна наприклад, зчитати вміст корзини який збережено в Local Storage то показати його
-    //TODO: ...
 
     var saved_cart = Storage.read("cart");
     if (saved_cart) {
@@ -76,11 +75,16 @@ function updateCart() {
     //Функція викликається при зміні вмісту кошика
     //Тут можна наприклад показати оновлений кошик на екрані та зберегти вміт кошика в Local Storage
 
+    var total = 0;
+    Cart.forEach(function (pizzacart) {
+        total += pizzacart.pizza[pizzacart.size].price * pizzacart.quantity;
+    });
+    $(".sum-number").text(total + " грн.");
+
     Storage.write("cart", Cart);
     //Очищаємо старі піци в кошику
     $cart.html("");
 
-    var total = 0;
     var one_pizza_sum = 0;
     var number_of_pizzas = 0;
 
@@ -88,9 +92,7 @@ function updateCart() {
     function showOnePizzaInCart(cart_item) {
         var html_code = Templates.PizzaCart_OneItem(cart_item);
 
-        //total += cart_item.pizza[cart_item.size].price;// !!!!!!!!!!!!!!!!!!!
-
-        number_of_pizzas +=1;
+        number_of_pizzas += 1;
         $(".order-count").text(number_of_pizzas);
 
         var $node = $(html_code);
@@ -98,8 +100,6 @@ function updateCart() {
         $node.find(".plus").click(function () {
             //Збільшуємо кількість замовлених піц
             cart_item.quantity += 1;
-           // total += cart_item.pizza[cart_item.size].price;
-           // $(".order-count").text(total);
 
             one_pizza_sum = cart_item.pizza[cart_item.size].quantity * cart_item.pizza[cart_item.size].price;
             $(".price").text(one_pizza_sum);
@@ -115,8 +115,6 @@ function updateCart() {
                 updateCart();
             } else {
                 cart_item.quantity -= 1;
-                //total -= cart_item.pizza[cart_item.size].price;
-                //$(".order-count").text(total);
 
                 one_pizza_sum -= cart_item.pizza[cart_item.size].price;
                 $(".price").text(one_pizza_sum);
@@ -126,15 +124,16 @@ function updateCart() {
 
         $node.find(".count-clear").click(function () {
             removeFromCart(cart_item);
-            //total -= cart_item.pizza[cart_item.size].price;
-            //$(".order-count").text(total);
             updateCart();
         });
 
         $cart.append($node);
     }
-
     Cart.forEach(showOnePizzaInCart);
+
+    // if (number_of_pizzas === 0){
+    //     $cart = $
+    // }
 }
 
 exports.removeFromCart = removeFromCart;
