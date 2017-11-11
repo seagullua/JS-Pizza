@@ -292,27 +292,22 @@ function getPizzaInCart() {
 function updateCart() {
     //Функція викликається при зміні вмісту кошика
     //Тут можна наприклад показати оновлений кошик на екрані та зберегти вміт кошика в Local Storage
-
     var total = 0;
+    var number_of_pizzas = Cart.length;
     Cart.forEach(function (pizzacart) {
         total += pizzacart.pizza[pizzacart.size].price * pizzacart.quantity;
     });
     $(".sum-number").text(total + " грн.");
+    $(".order-count").text(number_of_pizzas);
 
     Storage.write("cart", Cart);
-    //Очищаємо старі піци в кошику
-    $cart.html("");
+    $cart.html("");  //Очищаємо старі піци в кошику
 
     var one_pizza_sum = 0;
-    var number_of_pizzas = 0;
 
     //Онволення однієї піци
     function showOnePizzaInCart(cart_item) {
         var html_code = Templates.PizzaCart_OneItem(cart_item);
-
-        number_of_pizzas += 1;
-        $(".order-count").text(number_of_pizzas);
-
         var $node = $(html_code);
 
         $node.find(".plus").click(function () {
@@ -322,7 +317,6 @@ function updateCart() {
             one_pizza_sum = cart_item.pizza[cart_item.size].quantity * cart_item.pizza[cart_item.size].price;
             $(".price").text(one_pizza_sum);
 
-            //Оновлюємо відображення
             updateCart();
         });
 
@@ -347,11 +341,23 @@ function updateCart() {
 
         $cart.append($node);
     }
+
     Cart.forEach(showOnePizzaInCart);
 
-    // if (number_of_pizzas === 0){
-    //     $cart = $
-    // }
+    if (number_of_pizzas === 0) {
+        $cart.html(" <div class=\"no-order-text\" id = \"empty-fridge\">\n" +
+            "            Пусто в холодильнику?\n" +
+            "            <br>\n" +
+            "            Замовте піцу!\n" +
+            "            </div>");
+        $(".sum-title").hide();
+        $(".sum-number").hide();
+        $(".button-order").prop("disabled", true);
+    } else {
+        $(".sum-title").show();
+        $(".sum-number").show();
+        $(".button-order").prop("disabled", false);
+    }
 }
 
 exports.removeFromCart = removeFromCart;
