@@ -188,6 +188,8 @@ exports.PizzaMenu_OneItem = ejs.compile("<%\r\n\r\nfunction getIngredientsArray(
 
 exports.PizzaCart_OneItem = ejs.compile("<%\r\nfunction someFunction(pizza) {\r\n\r\n}\r\n\r\n%>\r\n\r\n\r\n<div class=\"order-one ng-scope\">\r\n    <img class=\"img-aside pizza-icon\" alt=\"Піца\" src=\"<%= pizza.icon %>\">\r\n\r\n    <p class=\"bold mb10 ng-scope\">\r\n    <% if(pizza[size].size === 30){ %>\r\n        <span class=\"order-title\"><%= pizza.title %> (Мала)</span>\r\n    <% }else { %>\r\n        <span class=\"order-title\"><%= pizza.title %> (Велика)</span>\r\n    <% } %>\r\n    </p>\r\n    <div class=\"order-text\">\r\n        <img class=\"diagonal-image\" src=\"assets/images/size-icon.svg\">\r\n        <span class=\"diagonal\"><%= pizza[size].size %></span>\r\n        <img class=\"gram-image\" src=\"assets/images/weight.svg\">\r\n        <span class=\"gram\"><%= pizza[size].weight %></span>\r\n    </div>\r\n    <div class=\"price-box\">\r\n        <span class=\"price\"><%= pizza[size].price*quantity%>  грн.</span>\r\n        <a class=\"minus btn btn-xs btn-danger btn-circle\">\r\n            <i class=\"glyphicon glyphicon-minus icon-white\">\r\n            </i>\r\n        </a>\r\n        <span class=\"label order-pizza-count\" style=\"color:black;\"><%= quantity %></span>\r\n        <a class=\"plus btn btn-xs btn-success btn-circle\" >\r\n            <i class=\"glyphicon glyphicon-plus icon-white\">\r\n            </i>\r\n        </a>\r\n        <a class=\"count-clear btn btn-xs btn-default btn-circle\" >\r\n            <i class=\"glyphicon glyphicon-remove icon-white\">\r\n            </i>\r\n        </a>\r\n    </div>\r\n</div>");
 
+exports.PizzaCart_OneItemSubmission = ejs.compile("<div class=\"order-one ng-scope\">\r\n    <img class=\"img-aside pizza-icon\" alt=\"Піца\" src=\"<%= pizza.icon %>\">\r\n\r\n    <p class=\"bold mb10 ng-scope\">\r\n    <% if(pizza[size].size === 30){ %>\r\n        <span class=\"order-title\"><%= pizza.title %> (Мала)</span>\r\n    <% }else { %>\r\n        <span class=\"order-title\"><%= pizza.title %> (Велика)</span>\r\n    <% } %>\r\n    </p>\r\n    <div class=\"order-text\">\r\n        <img class=\"diagonal-image\" src=\"assets/images/size-icon.svg\">\r\n        <span class=\"diagonal\"><%= pizza[size].size %></span>\r\n        <img class=\"gram-image\" src=\"assets/images/weight.svg\">\r\n        <span class=\"gram\"><%= pizza[size].weight %></span>\r\n    </div>\r\n    <div class=\"price-box\">\r\n        <span class=\"price\"><%= pizza[size].price*quantity%>  грн.</span>\r\n\r\n        <span class=\"label order-pizza-count\" style=\"color:black;\">піц: <%= quantity %> </span>\r\n\r\n    </div>\r\n</div>");
+
 },{"ejs":9}],3:[function(require,module,exports){
 /**
  * Created by chaika on 25.01.16.
@@ -306,7 +308,12 @@ function updateCart() {
 
     //Онволення однієї піци
     function showOnePizzaInCart(cart_item) {
-        var html_code = Templates.PizzaCart_OneItem(cart_item);
+        var html_code;
+        if($(".clear-order").html() === undefined){
+            html_code = Templates.PizzaCart_OneItemSubmission(cart_item);
+        }else {
+            html_code = Templates.PizzaCart_OneItem(cart_item);
+        }
         var $node = $(html_code);
 
         $node.find(".plus").click(function () {

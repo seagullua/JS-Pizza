@@ -1,0 +1,23 @@
+<div class="order-one ng-scope">
+    <img class="img-aside pizza-icon" alt="Піца" src="<%= pizza.icon %>">
+
+    <p class="bold mb10 ng-scope">
+    <% if(pizza[size].size === 30){ %>
+        <span class="order-title"><%= pizza.title %> (Мала)</span>
+    <% }else { %>
+        <span class="order-title"><%= pizza.title %> (Велика)</span>
+    <% } %>
+    </p>
+    <div class="order-text">
+        <img class="diagonal-image" src="assets/images/size-icon.svg">
+        <span class="diagonal"><%= pizza[size].size %></span>
+        <img class="gram-image" src="assets/images/weight.svg">
+        <span class="gram"><%= pizza[size].weight %></span>
+    </div>
+    <div class="price-box">
+        <span class="price"><%= pizza[size].price*quantity%>  грн.</span>
+
+        <span class="label order-pizza-count" style="color:black;">піц: <%= quantity %> </span>
+
+    </div>
+</div>
