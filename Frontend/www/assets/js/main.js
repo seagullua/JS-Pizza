@@ -213,7 +213,6 @@ $(function(){
         PizzaCart.clearCart();
     });
 
-
 });
 },{"./Pizza_List":1,"./pizza/PizzaCart":4,"./pizza/PizzaMenu":5}],4:[function(require,module,exports){
 /**
