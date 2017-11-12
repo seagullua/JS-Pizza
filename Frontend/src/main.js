@@ -57,22 +57,30 @@ $(function () {
             $(".address-help-block").hide();
         }
     });
-})
 
+    function valName() {
+        var expr = $("#inputName").val();
+        return expr.match(/^([a-zA-Zа-яА-Я]+|[a-zA-Zа-яА-Я]+[ ][a-zA-Zа-яА-Я]+|([a-zA-Zа-яА-Я]+[\-][a-zA-Zа-яА-Я]+))+$/);
+    }
 
-function valName() {
-    var expr = $("#inputName").val();
-    return expr.match(/^([a-zA-Zа-яА-Я]+|[a-zA-Zа-яА-Я]+[ ][a-zA-Zа-яА-Я]+|([a-zA-Zа-яА-Я]+[\-][a-zA-Zа-яА-Я]+))+$/);
-}
+    function valPhone() {
+        var expr = $("#inputPhone").val();
+        return expr.match(/^(\+380\d{9}|0\d{9})$/);
+    }
 
-function valPhone() {
-    var expr = $("#inputPhone").val();
-    return expr.match(/^(\+380\d{9}|0\d{9})$/);
-}
+    function valAddress() {
+        //later, when google map
+        return true;
+    }
 
-function valAddress() {
-   //later, when google map
-}
-
-
-;
+    $(".next-step-button").click(function () {
+        if (valName() && valPhone() && valAddress()) {
+            PizzaCart.createOrder(function (err, data) {
+                if (err){
+                   return console.log("Can't create order");
+                }
+                alert("Order created");
+            });
+        }
+    });
+});
