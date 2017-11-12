@@ -218,29 +218,57 @@ $(function () {
     $(".next-step-button").click(function () {
         if ($("#inputName").val() === "") {
             $(".name-help-block").show();
-        }else $(".name-help-block").hide();
+        } else $(".name-help-block").hide();
         if ($("#inputPhone").val() === "") {
             $(".phone-help-block").show();
-        }else  $(".phone-help-block").hide();
+        } else $(".phone-help-block").hide();
         if ($("#inputAddress").val() === "") {
             $(".address-help-block").show();
-        }else  $(".address-help-block").hide();
+        } else $(".address-help-block").hide();
     });
 
-    $(".form-control").focus(function () {
-        if ($("#inputName").val() !== "") {
+    $("#inputName").on("input", function () {
+        if (!valName()) {
+            $(".name-help-block").show();
+        } else {
             $(".name-help-block").hide();
         }
-        if ($("#inputPhone").val() !== "") {
+    });
+
+    $("#inputPhone").on("input", function () {
+        if (!valPhone()) {
+            $(".phone-help-block").show();
+        } else {
             $(".phone-help-block").hide();
         }
-        if ($("#inputAddress").val() !== "") {
+    });
+
+    $("#inputAddress").on("input", function () {
+        if (!valAddress()) {
+            $(".address-help-block").show();
+        } else {
             $(".address-help-block").hide();
         }
-    })
+    });
+})
 
 
-});
+function valName() {
+    var expr = $("#inputName").val();
+    return expr.match(/^([a-zA-Zа-яА-Я]+|[a-zA-Zа-яА-Я]+[ ][a-zA-Zа-яА-Я]+|([a-zA-Zа-яА-Я]+[\-][a-zA-Zа-яА-Я]+))+$/);
+}
+
+function valPhone() {
+    var expr = $("#inputPhone").val();
+    return expr.match(/^(\+380\d{9}|0\d{9})$/);
+}
+
+function valAddress() {
+   //later, when google map
+}
+
+
+;
 },{"./Pizza_List":1,"./pizza/PizzaCart":4,"./pizza/PizzaMenu":5}],4:[function(require,module,exports){
 /**
  * Created by chaika on 02.02.16.
