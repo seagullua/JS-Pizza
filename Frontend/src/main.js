@@ -2,7 +2,7 @@
  * Created by chaika on 25.01.16.
  */
 
-$(function(){
+$(function () {
     //This code will execute when the page is ready
     var PizzaMenu = require('./pizza/PizzaMenu');
     var PizzaCart = require('./pizza/PizzaCart');
@@ -21,5 +21,30 @@ $(function(){
     $(".clear-cart").click(function () {
         PizzaCart.clearCart();
     });
+
+    $(".next-step-button").click(function () {
+        if ($("#inputName").val() === "") {
+            $(".name-help-block").show();
+        }else $(".name-help-block").hide();
+        if ($("#inputPhone").val() === "") {
+            $(".phone-help-block").show();
+        }else  $(".phone-help-block").hide();
+        if ($("#inputAddress").val() === "") {
+            $(".address-help-block").show();
+        }else  $(".address-help-block").hide();
+    });
+
+    $(".form-control").focus(function () {
+        if ($("#inputName").val() !== "") {
+            $(".name-help-block").hide();
+        }
+        if ($("#inputPhone").val() !== "") {
+            $(".phone-help-block").hide();
+        }
+        if ($("#inputAddress").val() !== "") {
+            $(".address-help-block").hide();
+        }
+    })
+
 
 });
