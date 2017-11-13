@@ -127,11 +127,11 @@ function updateCart() {
         $cart.prepend($node);
     }
 
+    setToStorage();
     emptyCart();
     updateOrders();
     genSum();
     Cart.forEach(showOnePizzaInCart);
-    setToStorage();
 }
 
 function updateOrders() {
@@ -177,6 +177,9 @@ function genSum() {
 
 function setToStorage() {
     orders = getPizzaInCart();
+    if (orders === null) {
+        orders = [];
+    }
     Storage.set('cart', orders);
 }
 
