@@ -24,6 +24,10 @@ module.exports = function(grunt) {
             pizza: {
                 src:        'Frontend/src/main.js',
                 dest:       'Frontend/www/assets/js/main.js'
+            },
+            order: {
+              src: 'Frontend/src/main_order.js',
+              dest: 'Frontend/www/assets/js/main_order.js'
             }
         }
     };
@@ -56,6 +60,7 @@ module.exports = function(grunt) {
     grunt.registerTask('default',
         [
             'browserify:pizza',
+            'browserify:order'
             //Інші завдання які необхідно виконати
         ]
     );
