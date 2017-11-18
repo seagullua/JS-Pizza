@@ -64,18 +64,14 @@ $(function () {
                 googleMaps.geocodeLatLng(coordinates, function (err, address) {
                     if (!err) {
                         $(".order-adress").text($("#inputAddress").val());
-
-                        //change marker !!!! problem  - doesn't changes marker
                         googleMaps.updateMarker(coordinates);
-                        // if (googleMaps.old_marker) {
-                        //     googleMaps.old_marker.setMap(null);
-                        //     googleMaps.old_marker = null;
-                        // }
-                        // googleMaps.old_marker = new google.maps.Marker({
-                        //     position: coordinates,
-                        //     map: googleMaps.gmap,
-                        //     icon: "assets/images/home-icon.png"
-                        // });
+                        googleMaps.calculateRoute(new google.maps.LatLng(50.464379, 30.519131), coordinates, function (err, data) {
+                            if(!err){
+                                $(".order-time").text(data.duration.text);
+                            }else{
+                                $(".order-time").text("Помилка");
+                            }
+                        })
                     } else {
                         $(".order-adress").text("Немає адреси");
                     }

@@ -266,6 +266,14 @@ function initialize() {
                 $(".order-adress").text("Немає адреси");
             }
         })
+
+        calculateRoute(point, coordinates, function (err, data) {
+            if(!err){
+                $(".order-time").text(data.duration.text);
+            }else{
+                $(".order-time").text("Помилка");
+            }
+        })
     });
 }
 
@@ -309,12 +317,31 @@ function updateMarker(coordinates) {
     });
 }
 
+function calculateRoute(A_latlng, B_latlng, callback) {
+    var directionService = new google.maps.DirectionsService();
+    directionService.route({
+        origin: A_latlng,
+        destination: B_latlng,
+        travelMode: google.maps.TravelMode["DRIVING"]
+    }, function (response, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+            var leg = response.routes[0].legs[0];
+            callback(null, {
+                duration: leg.duration
+            });
+        } else {
+            callback(new Error("Can not	find direction"));
+        }
+    });
+}
+
 //Коли сторінка завантажилась
 google.maps.event.addDomListener(window, 'load', initialize);
 
 exports.geocodeAddress = geocodeAddress;
 exports.geocodeLatLng = geocodeLatLng;
 exports.updateMarker = updateMarker;
+exports.calculateRoute = calculateRoute;
 
 
 },{}],5:[function(require,module,exports){
@@ -384,18 +411,14 @@ $(function () {
                 googleMaps.geocodeLatLng(coordinates, function (err, address) {
                     if (!err) {
                         $(".order-adress").text($("#inputAddress").val());
-
-                        //change marker !!!! problem  - doesn't changes marker
                         googleMaps.updateMarker(coordinates);
-                        // if (googleMaps.old_marker) {
-                        //     googleMaps.old_marker.setMap(null);
-                        //     googleMaps.old_marker = null;
-                        // }
-                        // googleMaps.old_marker = new google.maps.Marker({
-                        //     position: coordinates,
-                        //     map: googleMaps.gmap,
-                        //     icon: "assets/images/home-icon.png"
-                        // });
+                        googleMaps.calculateRoute(new google.maps.LatLng(50.464379, 30.519131), coordinates, function (err, data) {
+                            if(!err){
+                                $(".order-time").text(data.duration.text);
+                            }else{
+                                $(".order-time").text("Помилка");
+                            }
+                        })
                     } else {
                         $(".order-adress").text("Немає адреси");
                     }

@@ -31,6 +31,14 @@ function initialize() {
                 $(".order-adress").text("Немає адреси");
             }
         })
+
+        calculateRoute(point, coordinates, function (err, data) {
+            if(!err){
+                $(".order-time").text(data.duration.text);
+            }else{
+                $(".order-time").text("Помилка");
+            }
+        })
     });
 }
 
@@ -74,10 +82,29 @@ function updateMarker(coordinates) {
     });
 }
 
+function calculateRoute(A_latlng, B_latlng, callback) {
+    var directionService = new google.maps.DirectionsService();
+    directionService.route({
+        origin: A_latlng,
+        destination: B_latlng,
+        travelMode: google.maps.TravelMode["DRIVING"]
+    }, function (response, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+            var leg = response.routes[0].legs[0];
+            callback(null, {
+                duration: leg.duration
+            });
+        } else {
+            callback(new Error("Can not	find direction"));
+        }
+    });
+}
+
 //Коли сторінка завантажилась
 google.maps.event.addDomListener(window, 'load', initialize);
 
 exports.geocodeAddress = geocodeAddress;
 exports.geocodeLatLng = geocodeLatLng;
 exports.updateMarker = updateMarker;
+exports.calculateRoute = calculateRoute;
 
