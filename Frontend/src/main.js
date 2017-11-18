@@ -7,6 +7,7 @@ $(function () {
     var PizzaMenu = require('./pizza/PizzaMenu');
     var PizzaCart = require('./pizza/PizzaCart');
     var Pizza_List = require('./Pizza_List');
+    var googleMaps = require("./googleMaps");
 
 
     PizzaCart.initialiseCart();
@@ -57,6 +58,32 @@ $(function () {
         } else {
             $(".address-help-block").hide();
         }
+
+        googleMaps.geocodeAddress($("#inputAddress").val(), function (err, coordinates) {
+            if (!err) {
+                googleMaps.geocodeLatLng(coordinates, function (err, address) {
+                    if (!err) {
+                        $(".order-adress").text($("#inputAddress").val());
+
+                        //change marker !!!! problem  - doesn't changes marker
+                        googleMaps.updateMarker(coordinates);
+                        // if (googleMaps.old_marker) {
+                        //     googleMaps.old_marker.setMap(null);
+                        //     googleMaps.old_marker = null;
+                        // }
+                        // googleMaps.old_marker = new google.maps.Marker({
+                        //     position: coordinates,
+                        //     map: googleMaps.gmap,
+                        //     icon: "assets/images/home-icon.png"
+                        // });
+                    } else {
+                        $(".order-adress").text("Немає адреси");
+                    }
+                });
+            }
+        });
+
+
     });
 
     function valName() {
@@ -77,13 +104,12 @@ $(function () {
     $(".next-step-button").click(function () {
         if (valName() && valPhone() && valAddress()) {
             PizzaCart.createOrder(function (err, data) {
-                if (err){
-                   return console.log("Can't create order");
+                if (err) {
+                    return console.log("Can't create order");
                 }
                 alert("Order created");
             });
         }
     });
 
-    require("./googleMaps");
 });

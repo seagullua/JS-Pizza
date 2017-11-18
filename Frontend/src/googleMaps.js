@@ -1,3 +1,6 @@
+var old_marker = null;
+var gmap = null;
+
 function initialize() {
 //Тут починаємо працювати з картою
     var mapProp = {
@@ -5,34 +8,76 @@ function initialize() {
         zoom: 15
     };
     var html_element = document.getElementById("googleMaps");
-    var map = new google.maps.Map(html_element, mapProp);
+    gmap = new google.maps.Map(html_element, mapProp);
 
     //show shop marker
     var point = new google.maps.LatLng(50.464379, 30.519131);
     var shopMarker = new google.maps.Marker({
         position: point,
-        map: map,
+        map: gmap,
         icon: "assets/images/map-icon.png"
     });
     //Карта створена і показана
-    
-    var old_marker = null;
 
-    google.maps.event.addListener(map, 'click', function (me) {
+    google.maps.event.addListener(gmap, 'click', function (me) {
         var coordinates = me.latLng; //coordinates	- такий самий об’єкт як створений new google.maps.LatLng(...)
+        updateMarker(coordinates);
 
-        if (old_marker) {
-            old_marker.setMap(null);
-            old_marker = null;
+        geocodeLatLng(coordinates, function (err, address) {
+            if (!err) {
+                $(".order-adress").text(address);
+                $("#inputAddress").val(address);
+            } else {
+                $(".order-adress").text("Немає адреси");
+            }
+        })
+    });
+}
+
+//адресу за координатами
+function geocodeLatLng(latlng, callback) {
+//Модуль за роботу з адресою
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({'location': latlng}, function (results, status) {
+        if (status === google.maps.GeocoderStatus.OK && results[1]) {
+            var adress = results[1].formatted_address;
+            callback(null, adress);
+        } else {
+            callback(new Error("Can't find adress"));
         }
+    });
+}
 
-        old_marker = new google.maps.Marker({
-            position: coordinates,
-            map: map,
-            icon: "assets/images/home-icon.png"
-        });
+//координати за адресою
+function geocodeAddress(address, callback) {
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({'address': address}, function (results, status) {
+        if (status === google.maps.GeocoderStatus.OK && results[0]) {
+            var coordinates = results[0].geometry.location;
+            callback(null, coordinates);
+        } else {
+            callback(new Error("Can not find the address"));
+        }
+    });
+}
+
+function updateMarker(coordinates) {
+    if (old_marker) {
+        old_marker.setMap(null);
+        old_marker = null;
+    }
+
+    old_marker = new google.maps.Marker({
+        position: coordinates,
+        map: gmap,
+        icon: "assets/images/home-icon.png"
     });
 }
 
 //Коли сторінка завантажилась
 google.maps.event.addDomListener(window, 'load', initialize);
+
+exports.geocodeAddress = geocodeAddress;
+exports.geocodeLatLng = geocodeLatLng;
+exports.updateMarker = updateMarker;
+
