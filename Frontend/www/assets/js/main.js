@@ -232,7 +232,21 @@ exports.PizzaCart_OneItem = ejs.compile("<%\r\nfunction someFunction(pizza) {\r\
 
 exports.PizzaCart_OneItemSubmission = ejs.compile("<div class=\"order-one ng-scope\">\r\n    <img class=\"img-aside pizza-icon\" alt=\"Піца\" src=\"<%= pizza.icon %>\">\r\n\r\n    <p class=\"bold mb10 ng-scope\">\r\n    <% if(pizza[size].size === 30){ %>\r\n        <span class=\"order-title\"><%= pizza.title %> (Мала)</span>\r\n    <% }else { %>\r\n        <span class=\"order-title\"><%= pizza.title %> (Велика)</span>\r\n    <% } %>\r\n    </p>\r\n    <div class=\"order-text\">\r\n        <img class=\"diagonal-image\" src=\"assets/images/size-icon.svg\">\r\n        <span class=\"diagonal\"><%= pizza[size].size %></span>\r\n        <img class=\"gram-image\" src=\"assets/images/weight.svg\">\r\n        <span class=\"gram\"><%= pizza[size].weight %></span>\r\n    </div>\r\n    <div class=\"price-box\">\r\n        <span class=\"price\"><%= pizza[size].price*quantity%>  грн.</span>\r\n\r\n        <span class=\"label order-pizza-count\" style=\"color:black;\">піц: <%= quantity %> </span>\r\n\r\n    </div>\r\n</div>");
 
-},{"ejs":10}],4:[function(require,module,exports){
+},{"ejs":11}],4:[function(require,module,exports){
+function initialize() {
+//Тут починаємо працювати з картою
+    var mapProp = {
+        center: new google.maps.LatLng(50.464379, 30.519131),
+        zoom: 11
+    };
+    var html_element = document.getElementById("googleMaps");
+    var map = new google.maps.Map(html_element, mapProp);
+//Карта створена і показана
+}
+
+//Коли сторінка завантажилась
+google.maps.event.addDomListener(window, 'load', initialize);
+},{}],5:[function(require,module,exports){
 /**
  * Created by chaika on 25.01.16.
  */
@@ -242,6 +256,7 @@ $(function () {
     var PizzaMenu = require('./pizza/PizzaMenu');
     var PizzaCart = require('./pizza/PizzaCart');
     var Pizza_List = require('./Pizza_List');
+
 
     PizzaCart.initialiseCart();
     PizzaMenu.initialiseMenu();
@@ -319,8 +334,9 @@ $(function () {
         }
     });
 
+    require("./googleMaps");
 });
-},{"./Pizza_List":2,"./pizza/PizzaCart":5,"./pizza/PizzaMenu":6}],5:[function(require,module,exports){
+},{"./Pizza_List":2,"./googleMaps":4,"./pizza/PizzaCart":6,"./pizza/PizzaMenu":7}],6:[function(require,module,exports){
 /**
  * Created by chaika on 02.02.16.
  */
@@ -492,7 +508,7 @@ exports.clearCart = clearCart();
 exports.PizzaSize = PizzaSize;
 
 exports.createOrder = createOrder;
-},{"../API":1,"../Templates":3,"./Storage":7}],6:[function(require,module,exports){
+},{"../API":1,"../Templates":3,"./Storage":8}],7:[function(require,module,exports){
 /**
  * Created by chaika on 02.02.16.
  */
@@ -596,7 +612,7 @@ function initialiseMenu() {
 exports.filterPizza = filterPizza;
 exports.initialiseMenu = initialiseMenu;
 
-},{"../Pizza_List":2,"../Templates":3,"./PizzaCart":5}],7:[function(require,module,exports){
+},{"../Pizza_List":2,"../Templates":3,"./PizzaCart":6}],8:[function(require,module,exports){
 var basil = require('basil.js');
 basil = new basil();
 
@@ -607,7 +623,7 @@ exports.write = function (key, value) {
 exports.read = function (key) {
     return basil.get(key);
 }
-},{"basil.js":8}],8:[function(require,module,exports){
+},{"basil.js":9}],9:[function(require,module,exports){
 (function () {
 	// Basil
 	var Basil = function (options) {
@@ -995,9 +1011,9 @@ exports.read = function (key) {
 
 })();
 
-},{}],9:[function(require,module,exports){
-
 },{}],10:[function(require,module,exports){
+
+},{}],11:[function(require,module,exports){
 /*
  * EJS Embedded JavaScript templates
  * Copyright 2112 Matthew Eernisse (mde@fleegix.org)
@@ -1865,7 +1881,7 @@ if (typeof window != 'undefined') {
   window.ejs = exports;
 }
 
-},{"../package.json":12,"./utils":11,"fs":9,"path":13}],11:[function(require,module,exports){
+},{"../package.json":13,"./utils":12,"fs":10,"path":14}],12:[function(require,module,exports){
 /*
  * EJS Embedded JavaScript templates
  * Copyright 2112 Matthew Eernisse (mde@fleegix.org)
@@ -2031,7 +2047,7 @@ exports.cache = {
   }
 };
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 module.exports={
   "_from": "ejs@^2.4.1",
   "_id": "ejs@2.5.7",
@@ -2112,7 +2128,7 @@ module.exports={
   "version": "2.5.7"
 }
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -2340,7 +2356,7 @@ var substr = 'ab'.substr(-1) === 'b'
 ;
 
 }).call(this,require('_process'))
-},{"_process":14}],14:[function(require,module,exports){
+},{"_process":15}],15:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -2526,4 +2542,4 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}]},{},[4]);
+},{}]},{},[5]);
