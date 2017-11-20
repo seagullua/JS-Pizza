@@ -93,7 +93,10 @@ $(function () {
     }
 
     function valAddress() {
-        //later, when google map
+        if ($("#inputAddress").val() === "") {
+            $(".address-help-block").show();
+            return false
+        } else $(".address-help-block").hide();
         return true;
     }
 
