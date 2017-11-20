@@ -26,13 +26,20 @@ exports.createOrder = function (req, res) {
     var order_info = req.body;
     console.log("Creating Order", order_info);
 
+    var descrip = "";
+
+    order_info.Pizzas.forEach(function (t) {
+        descrip += "<" + t.pizza.title + "> ";
+    })
+
     var order = {
         version: 3,
         public_key: LIQPAY_PUBLIC_KEY,
         action: "pay",
-        amount: 568.00,
+        amount: order_info.Sum,
         currency: "UAH",
-        description: "Опис транзакції",
+        description: "Pizzas ordered: " + descrip + "\nName: " +
+                        order_info.Name + "\nPhone: " + order_info.Phone + "\nAddress: " + order_info.Address,
         order_id: Math.random(),
         //!!!Важливо щоб було 1,	бо інакше візьме гроші!!!
         sandbox: 1
@@ -45,7 +52,8 @@ exports.createOrder = function (req, res) {
         Name: order_info.Name,
         Phone: order_info.Phone,
         Address: order_info.Address,
-        //pizzas: order_info.order.length,
+        Pizzas: order_info.Pizzas.length,
+        Sum: order_info.Sum,
         data: data,
         signature: signature
     });

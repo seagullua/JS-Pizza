@@ -109,7 +109,7 @@ $(function () {
                     data: data.data,
                     signature: data.signature,
                     embedTo: "#liqpay",
-                    mode: "popup"	//	embed	||	popup
+                    mode: "embed"	//	popup	||	popup
                 }).on("liqpay.callback", function (data) {
                     console.log(data.status);
                     console.log(data);

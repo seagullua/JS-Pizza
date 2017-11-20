@@ -456,7 +456,7 @@ $(function () {
                     data: data.data,
                     signature: data.signature,
                     embedTo: "#liqpay",
-                    mode: "popup"	//	embed	||	popup
+                    mode: "embed"	//	popup	||	popup
                 }).on("liqpay.callback", function (data) {
                     console.log(data.status);
                     console.log(data);
@@ -546,16 +546,25 @@ function getPizzaInCart() {
     return Cart;
 }
 
-function updateCart() {
-    //Функція викликається при зміні вмісту кошика
-    //Тут можна наприклад показати оновлений кошик на екрані та зберегти вміт кошика в Local Storage
+function countTotal() {
     var total = 0;
-    var number_of_pizzas = Cart.length;
     Cart.forEach(function (pizzacart) {
         total += pizzacart.pizza[pizzacart.size].price * pizzacart.quantity;
     });
-    $(".sum-number").text(total + " грн.");
+    return total;
+}
+
+function updateCart() {
+    //Функція викликається при зміні вмісту кошика
+    //Тут можна наприклад показати оновлений кошик на екрані та зберегти вміт кошика в Local Storage
+    //var total = 0;
+    var number_of_pizzas = Cart.length;
+    // Cart.forEach(function (pizzacart) {
+    //     total += pizzacart.pizza[pizzacart.size].price * pizzacart.quantity;
+    // });
+    // $(".sum-number").text(total + " грн.");
     $(".order-count").text(number_of_pizzas);
+    $(".sum-number").text(countTotal() + " грн.");
 
     Storage.write("cart", Cart);
     $cart.html("");  //Очищаємо старі піци в кошику
@@ -626,7 +635,9 @@ function createOrder(callback) {
     API.createOrder({
         Name: $("#inputName").val(),
         Phone: $("#inputPhone").val(),
-        Address: $("#inputAddress").val()
+        Address: $("#inputAddress").val(),
+        Pizzas: Cart,
+        Sum: countTotal()
     }, function (err, result) {
         if(err) return callback(err);
         callback(null,  result);
