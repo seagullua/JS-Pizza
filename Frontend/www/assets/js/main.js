@@ -413,9 +413,9 @@ $(function () {
                         $(".order-adress").text($("#inputAddress").val());
                         googleMaps.updateMarker(coordinates);
                         googleMaps.calculateRoute(new google.maps.LatLng(50.464379, 30.519131), coordinates, function (err, data) {
-                            if(!err){
+                            if (!err) {
                                 $(".order-time").text(data.duration.text);
-                            }else{
+                            } else {
                                 $(".order-time").text("Помилка");
                             }
                         })
@@ -450,7 +450,22 @@ $(function () {
                 if (err) {
                     return console.log("Can't create order");
                 }
-                alert("Order created");
+                // alert("Order created");
+
+                LiqPayCheckout.init({
+                    data: data.data,
+                    signature: data.signature,
+                    embedTo: "#liqpay",
+                    mode: "popup"	//	embed	||	popup
+                }).on("liqpay.callback", function (data) {
+                    console.log(data.status);
+                    console.log(data);
+                    alert("Order status: " + data.status);
+                }).on("liqpay.ready", function (data) {
+                    //	ready
+                }).on("liqpay.close", function (data) {
+                    //	close
+                });
             });
         }
     });
