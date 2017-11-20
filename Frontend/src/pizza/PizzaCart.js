@@ -83,12 +83,7 @@ function countTotal() {
 function updateCart() {
     //Функція викликається при зміні вмісту кошика
     //Тут можна наприклад показати оновлений кошик на екрані та зберегти вміт кошика в Local Storage
-    //var total = 0;
     var number_of_pizzas = Cart.length;
-    // Cart.forEach(function (pizzacart) {
-    //     total += pizzacart.pizza[pizzacart.size].price * pizzacart.quantity;
-    // });
-    // $(".sum-number").text(total + " грн.");
     $(".order-count").text(number_of_pizzas);
     $(".sum-number").text(countTotal() + " грн.");
 
