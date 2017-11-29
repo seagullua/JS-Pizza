@@ -11,9 +11,8 @@ $(function() {
     $cart.find('.remove').remove();
     $top.find('#top-p').remove();
     $('#inputName').focus(function () {
-        var name;
+        var name = $('input.name').val();
         $('#inputName').keyup(function () {
-            name = $('input.name').val();
             if (validName(name)) {
                 $('.name-form.form-group').removeClass('has-error');
                 $('#helpName').css('display', 'none');
@@ -24,10 +23,20 @@ $(function() {
             }
         });
     });
+    $('#inputName').focusout(function () {
+        var name = $('input.name').val();
+        if (validName(name)) {
+            $('.name-form.form-group').removeClass('has-error');
+            $('#helpName').css('display', 'none');
+            $('.name-form.form-group').addClass('has-success');
+        } else {
+            $('.name-form.form-group').addClass('has-error');
+            $('#helpName').css('display', 'block');
+        }
+    });
     $('#inputPhone').focus(function () {
-        var number;
+        var number = $('input.phone').val();
         $('#inputPhone').keyup(function () {
-            number = $('input.phone').val();
             if (validNumberLength(number) && validFigures(number) && validNumber(number)) {
                 $('.phone-form.form-group').removeClass('has-error');
                 $('#helpPhone').css('display', 'none');
@@ -37,6 +46,17 @@ $(function() {
                 $('#helpPhone').css('display', 'block');
             }
         });
+    });
+    $('#inputPhone').focusout(function () {
+        var number = $('input.phone').val();
+        if (validNumberLength(number) && validFigures(number) && validNumber(number)) {
+            $('.phone-form.form-group').removeClass('has-error');
+            $('#helpPhone').css('display', 'none');
+            $('.phone-form.form-group').addClass('has-success');
+        } else {
+            $('.phone-form.form-group').addClass('has-error');
+            $('#helpPhone').css('display', 'block');
+        }
     });
     $('#inputAddress').focusout(function () {
         var address;
@@ -69,15 +89,9 @@ $(function() {
         var number = $('input.phone').val();
         var address = $('input.address').val();
         if (validEmpty(name, number, address)) {
-            $('.name-form.form-group').addClass('has-success');
-            $('.phone-form.form-group').addClass('has-success');
-            $('.address-form.form-group').addClass('has-success');
-            $('.name-form.form-group').removeClass('has-error');
-            $('.phone-form.form-group').removeClass('has-error');
-            $('.address-form.form-group').removeClass('has-error');
-            $('#helpName').css('display', 'none');
-            $('#helpPhone').css('display', 'none');
-            $('#helpAddress').css('display', 'none');
+            $('.contact-form').css('display', 'none');
+            $('#maps').css('display', 'none');
+            $('#liqpay').css('display', 'block');
             var orders = Cart.getFromStorage();
             var pizza = [];
             var name_pizza;
@@ -110,7 +124,27 @@ $(function() {
                 pizza: pizza,
                 price: price
             };
-            API.createOrder(order_info, function (err, data) {});
+            API.createOrder(order_info, function (err, data) {
+                if (!err) {
+                    LiqPayCheckout.init({
+                        data: data.data,
+                        signature: data.signature,
+                        embedTo: "#liqpay",
+                        mode: "embed",
+                    }).on("liqpay.callback", function(data){
+                        console.log(data.status);
+                        console.log(data);
+                        alert('Оплата пройшла успішно. Очікуйте доставку.');
+                        $('.contact-form').css('display', 'block');
+                        $('#maps').css('display', 'block');
+                        $('#liqpay').css('display', 'none');
+                    }).on("liqpay.ready", function(data){
+                    }).on("liqpay.close", function(data){
+                    });
+                } else {
+                    alert('Неправильно введені дані!');
+                }
+            });
         }
     });
     google.maps.event.addDomListener(window, 'load', initializeMaps);
