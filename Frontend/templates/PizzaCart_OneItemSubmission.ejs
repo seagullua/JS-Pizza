@@ -1,11 +1,3 @@
-<%
-function someFunction(pizza) {
-
-}
-
-%>
-
-
 <div class="order-one ng-scope">
     <img class="img-aside pizza-icon" alt="Піца" src="<%= pizza.icon %>">
 
@@ -24,18 +16,8 @@ function someFunction(pizza) {
     </div>
     <div class="price-box">
         <span class="price"><%= pizza[size].price*quantity%>  грн.</span>
-        <a class="minus btn btn-xs btn-danger btn-circle">
-            <i class="glyphicon glyphicon-minus icon-white">
-            </i>
-        </a>
-        <span class="label order-pizza-count" style="color:black;"><%= quantity %></span>
-        <a class="plus btn btn-xs btn-success btn-circle" >
-            <i class="glyphicon glyphicon-plus icon-white">
-            </i>
-        </a>
-        <a class="count-clear btn btn-xs btn-default btn-circle" >
-            <i class="glyphicon glyphicon-remove icon-white">
-            </i>
-        </a>
+
+        <span class="label order-pizza-count" style="color:black;">піц: <%= quantity %> </span>
+
     </div>
 </div>

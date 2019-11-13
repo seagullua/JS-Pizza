@@ -1,0 +1,71 @@
+<% include common/header.ejs %>
+
+<div class="">
+    <div class="main-order-container">
+        <div class="contact-form">
+            <div class="form-description">
+                1. Контактні дані
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="form-horizontal">
+                        <div class="form-group name-group">
+                            <label class="col-sm-2 control-label">Ім’я</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" id="inputName" placeholder="Ім’я Прізвище">
+                            </div>
+                            <span class="help-block name-help-block" style="display:none">Введіть ім'я (без цифр та інших символів)</span>
+                        </div>
+                        <div class="form-group phone-group">
+                            <label class="col-sm-2 control-label">Телефон</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" id="inputPhone" placeholder="+380661234567">
+                            </div>
+                            <span class="help-block phone-help-block" style="display:none">Введіть номер у форматі +380 або почніть з 0</span>
+                        </div>
+                        <div class="form-group address-group">
+                            <label class="col-sm-2 control-label">Адреса</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" id="inputAddress"
+                                       placeholder="Київ, вул. Спаська, 2">
+                            </div>
+                            <span class="help-block address-help-block" style="display:none">Введіть адресу доставки піци</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 order-summary">
+                    <div class="bs-callout bs-call-out-warning">
+                        <h4>Інформація про замовлення</h4>
+                        <p>
+                            <b>Приблизний час доставки: </b>
+                            <span class="order-time">невідомий</span>
+                        </p>
+
+                        <p>
+                            <b>Адреса доставки: </b>
+                            <span class="order-adress">невідома</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group next-step-wrap">
+                    <div class="next-step-width">
+                        <button type="button" class="btn btn-warning btn-block next-step-button">
+                            Далі
+                            <i class="glyphicon glyphicon-chevron-right icon-white">
+                            </i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="googleMaps" class="google-maps" style="position: relative; overflow: hidden"></div>
+        <!-- місце для віджету -->
+        <div id="liqpay"></div>
+    </div>
+</div>
+
+<% include common/topPanel.ejs %>
+<% include common/rightPanelForSubmission.ejs %>
+<% include common/footer.ejs %>

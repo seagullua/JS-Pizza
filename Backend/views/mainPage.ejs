@@ -1,0 +1,49 @@
+<% include common/header.ejs %>
+
+<div class="">
+    <div class="inner-container" >
+        <div class="page-title">
+            <h2>
+                <span class="all-pizza-title">Усі піци</span>
+                <span class="badge orange pizza-count">8</span>
+            </h2>
+            <div class="all-pizza-type-wrap">
+                <ul class="nav nav-pills pizza-all-types">
+                    <li type="button" class="active pizza-filter-button button-all" >
+                        <a href="#" data-filter="0">Усі</a>
+                    </li>
+                    <li type="button" class="pizza-filter-button button-meat">
+                        <a href="#" data-filter="1">
+                            Мясні
+                        </a>
+                    </li>
+                    <li type="button" class="pizza-filter-button button-pineapple">
+                        <a href="#" data-filter="2">
+                            З ананасами
+                        </a>
+                    </li>
+                    <li type="button" class="pizza-filter-button button-mushroom">
+                        <a href="#" data-filter="3">
+                            З грибами
+                        </a>
+                    </li>
+                    <li type="button" class="pizza-filter-button button-sea">
+                        <a href="#" data-filter="4">
+                            З морепродуктами
+                        </a>
+                    </li>
+                    <li type="button" class="pizza-filter-button button-vega">
+                        <a href="#" data-filter="5">
+                            Вега
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row" id="pizza_list"></div>
+    </div>
+</div>
+
+<% include common/topPanel.ejs %>
+<% include common/rightPanel.ejs %>
+<% include common/footer.ejs %>
