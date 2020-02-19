@@ -9,9 +9,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ajax": "0.0.4",
     "basil.js": "^0.4.3",
+    "bootstrap": "^3.4.1",
     "brfs": "^1.6.1",
-    "ejs": "^2.7.4"
+    "ejs": "^2.7.4",
+    "jquery": "^3.4.1"
   },
   "repository": {
     "type": "git",

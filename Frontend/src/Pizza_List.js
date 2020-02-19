@@ -113,7 +113,7 @@ var pizza_info = [
         }
     },
     {
-        id:43,
+        id:3,
         icon:'assets/images/pizza_6.jpg',
         title: "Мікс смаків",
         type: 'М’ясна піца',
@@ -173,5 +173,3 @@ var pizza_info = [
         }
     }
 ];
-
-module.exports = pizza_info;

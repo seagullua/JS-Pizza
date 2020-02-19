@@ -1,10 +1,61 @@
-.pizza-card {
-  img {
-    max-width: 250px;
-  }
+.all-pizza-quantity{
+  background-color: orange;
+  color: white;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  line-height: 15px;
+}
 
-  h3 {
-    color: @mainColor;
-    background-color: lighten(@mainColor, 45%);
+.all-pizza-count{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+
+  .all-pizza-quantity{
+
   }
 }
+
+.pizza-filters{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  .filter-item{
+    padding: 1rem 0.5rem;
+  }
+}
+
+.pizza-page{
+  display: flex;
+  flex-direction: row;
+}
+
+.pizza-card {
+  img {
+    padding: 10px;
+    max-height: 250px;
+  }
+
+  .caption{
+    display: flex;
+    flex-direction: column;
+
+    .pizza-footer-info{
+      display: flex;
+      flex-direction: row;
+
+      .pizza-info-sm{
+        display: flex;
+        flex-direction: column;
+      }
+      .pizza-info-bg{
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+

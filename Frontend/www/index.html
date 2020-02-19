@@ -2,88 +2,84 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Pizza</title>
-
-    <!-- Bootsrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <title>Pizza JS</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <!-- LESS основний файл -->
     <link rel="stylesheet/less" type="text/css" href="assets/less/main.less" />
-    <!-- LESS JavaScript компілятор -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
-<div id="cart"></div>
-<div class="container">
-    <nav class="navbar navbar-light bg-dark">
-      <a class="navbar-brand">Navbar</a>
-      <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </nav>
-    <div class="row" id="pizza_list">
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail pizza-card">
-                <img src="assets/images/pizza_1.jpg">
+    <div class= "container-fluid main-container">
+        <div class = "left-container col-lg-10 col-md-9 col-sm-8 col-xs-7">
 
-                <div class="caption"><h3>Thumbnail label</h3>
+            <div class="all-pizza-count">
+                Усі піци
+                <div class="all-pizza-quantity">
 
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                </div>
+            </div>
 
-                    <p>
-                        <a href="#" class="btn btn-primary">Button 2</a>
-                        <a href="#" class="btn btn-default">Button 1</a>
-                    </p>
+            <div class="pizza-filters">
+                <a href="all" class="filter-item">Усі</a>
+                <a href="cheese" class="filter-item">Сир</a>
+                <a href="Ananas" class="filter-item">Ананас</a>
+                <a href="Bekon" class="filter-item">Бекон</a>
+                <a href="Tomat" class="filter-item">Томат</a>
+            </div>
+
+            <div class=" pizza-page">
+                <div class="pizza-list">
+
                 </div>
             </div>
         </div>
+        <div class = "right-container col-lg-2 col-md-3 col-sm-4 col-xs-5">
+            <div class = "container-orders">
+                <div class = "order-info">
+                    <div class = "order-name">
+                        Замовлення
+                    </div>
+                    <div class = "order-quantity">
 
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail pizza-card">
-                <img src="assets/images/pizza_2.jpg">
-
-                <div class="caption"><h3>Thumbnail label</h3>
-
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
-                    <p>
-                        <a href="#" class="btn btn-primary">Button 3</a>
-                        <a href="#" class="btn btn-default">Button 4</a>
-                    </p>
+                    </div>
+                    <div class = "order-clear">
+                        <p href="#" class ="clear-cart">Очистити замовлення</p>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail pizza-card">
-                <img src="assets/images/pizza_3.jpg">
+                <div class = "order-items">
 
-                <div class="caption"><h3>Thumbnail label</h3>
+                </div>
 
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
-                    <p>
-                        <a href="#" class="btn btn-primary">Button 5</a>
-                        <a href="#" class="btn btn-default">Button 6</a>
-                    </p>
+                <div class = "order-finish">
+                    <div class = "order-result">
+                        <div class = "order-result-name">
+                            Сума замовлення
+                        </div>
+                        <div class = "order-result-sum">
+                            грн.
+                        </div>
+                    </div>
+                    <button>Замовити</button>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- jQuery JavaScript -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
+    <div class = "bottom-logo">
+        Цього
+        Тижня
+        НА ВСЕ
+        -20%
+    </div>
 
-<!--Bootsrap JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-<!--Own JavaScript -->
-<!--<script type="text/javascript" src="assets/js/main.js"> </script>-->
-
-
-<script src="http://localhost:35729/main.js"></script>
 </body>
+    <script type="text/javascript" src="assets/js/main.js"> </script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 </html>
