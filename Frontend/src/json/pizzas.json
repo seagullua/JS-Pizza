@@ -4,7 +4,7 @@
     "name" : "BBQ",
     "title": "М'ясна піца",
     "ingredients" : ["becon", "cheese", "tomato"],
-    "img" : "assets/images/pizza_1.jpg",
+    "img" : "images/pizza_1.jpg",
     "status": "Популярна",
     "small_size": {
       "weight": 314,
@@ -22,7 +22,7 @@
     "name" : "Hawai",
     "title": "М'ясна піца",
     "ingredients" : ["becon", "ananas", "cheese"],
-    "img" : "assets/images/pizza_7.jpg",
+    "img" : "images/pizza_7.jpg",
     "status": "Нова",
     "small_size": {
       "weight": 432,
@@ -39,8 +39,8 @@
     "id": 3,
     "name" : "Diablo",
     "title": "М'ясна піца",
-    "ingredients" : ["becon", "tomato"],
-    "img" : "assets/images/pizza_6.jpg",
+    "ingredients" : ["becon"],
+    "img" : "images/pizza_6.jpg",
     "status": "",
     "small_size": {
       "weight": 460,
@@ -58,7 +58,7 @@
     "title": "М'ясна піца",
     "name" : "Mad Tomat",
     "ingredients" : ["tomato", "cheese"],
-    "img" : "assets/images/pizza_4.jpg",
+    "img" : "images/pizza_4.jpg",
     "status": "",
     "small_size": {
       "weight": 444,

@@ -1,0 +1,125 @@
+@mainColor: blue;
+
+@import "pizza/pizza-card";
+@import "pizza/order-list";
+
+@fontColor: #FFA500;
+@boldText: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+@media (min-width: 1200px) {
+  .pizza-list{
+    margin: 0 6rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .promo{
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .working-hours{
+    display: none;
+  }
+}
+
+.main-container{
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+
+  .top-logo{
+    text-align: center;
+    color: white;
+    height: 85px;
+    width: 70px;
+    background-color: @fontColor;
+    opacity: 1;
+    z-index: 2;
+    top:0;
+    position: fixed;
+    clip-path: polygon(100% 0, 100% 100%, 50% 72%, 0 100%, 0 0);
+
+    p{
+      padding-top: 15%;
+    }
+  }
+
+
+  .left-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    height: 100vh;
+    z-index: 1;
+
+    .top-nav-bar{
+      position: fixed;
+      background-color: black;
+      opacity: 0.8;
+      height: 10%;
+      z-index: 2;
+      display: flex;flex-direction: column;
+      padding-left: 70px;
+
+      .top-bar-info{
+        border-bottom: 1px solid white;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 5px 5px;
+
+        .phone-number{
+          opacity: 0.7;
+          font-size: 1.5rem;
+        }
+        .working-hours{
+          opacity: 0.7;
+        }
+        .promo{
+          opacity: 0.7;
+        }
+      }
+      .bot-bar-info{
+        color: white;
+        display: flex;
+        padding-left: 5px;
+      }
+
+      .login-button{
+        background-color: @fontColor;
+        border-radius: 3px;
+        border: none;
+        color: white;
+      }
+    }
+  }
+
+  .right-container{
+    padding: 0;
+  }
+}
+
+.bottom-logo{
+  text-align: center;
+  color: white;
+  height: 85px;
+  width: 70px;
+  position: fixed;
+  bottom: 0;
+  background-color: @fontColor;
+  opacity: 1;
+  z-index: 2;
+  clip-path: polygon(50% 24%, 100% 0, 100% 100%, 0 100%, 0 0);
+
+  p{
+    padding-top: 20%;
+  }
+}
+
+
+
+

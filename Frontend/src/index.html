@@ -7,14 +7,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <!-- LESS основний файл -->
-    <link rel="stylesheet/less" type="text/css" href="assets/less/main.less" />
+    <link rel="stylesheet/less" type="text/css" href="less/main.less" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
     <div class= "container-fluid main-container">
+
+        <div class = "top-logo">
+            <p>
+                PIZZA
+            KMA
+            </p>
+        </div>
+
         <div class = "left-container col-lg-10 col-md-9 col-sm-8 col-xs-7">
+
+            <nav class ="top-nav-bar col-lg-10 col-md-9 col-sm-8 col-xs-7">
+                <div class="top-bar-info">
+                    <div class="phone-number">
+                        +380958091390
+                    </div>
+                    <div class="working-hours">
+                        Працюємо 24 на 7
+                    </div>
+                    <div class="promo">
+                        Безкоштонв доставка піци
+                    </div>
+                    <button class="login-button" style="color: black">
+                        Ввійти
+                    </button>
+                </div>
+                <div class="bot-bar-info">
+                    <p>Піца</p>
+                </div>
+            </nav>
 
             <div class="all-pizza-count">
                 Усі піци
@@ -24,11 +52,11 @@
             </div>
 
             <div class="pizza-filters">
-                <a href="all" class="filter-item">Усі</a>
-                <a href="cheese" class="filter-item">Сир</a>
-                <a href="Ananas" class="filter-item">Ананас</a>
-                <a href="Bekon" class="filter-item">Бекон</a>
-                <a href="Tomat" class="filter-item">Томат</a>
+                <a class="filter-item" id="all">Усі</a>
+                <a class="filter-item" id="cheese">Сир</a>
+                <a class="filter-item" id="ananas">Ананас</a>
+                <a class="filter-item" id="becon">Бекон</a>
+                <a class="filter-item" id="tomato">Томат</a>
             </div>
 
             <div class=" pizza-page">
@@ -58,10 +86,10 @@
                 <div class = "order-finish">
                     <div class = "order-result">
                         <div class = "order-result-name">
-                            Сума замовлення
+
                         </div>
                         <div class = "order-result-sum">
-                            грн.
+
                         </div>
                     </div>
                     <button>Замовити</button>
@@ -71,14 +99,16 @@
     </div>
 
     <div class = "bottom-logo">
+        <p>
         Цього
         Тижня
         НА ВСЕ
         -20%
+        </p>
     </div>
 
 </body>
-    <script type="text/javascript" src="assets/js/main.js"> </script>
+    <script type="text/javascript" src="js/main.js"> </script>
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
