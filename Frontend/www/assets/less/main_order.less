@@ -8,14 +8,13 @@
 @discountBorderColor: rgb(209, 98, 0);
 @rigthPanelWidth: 320px;
 @topPartHeight: 80px;
-@footerPartHeight: 120px;
+@footerPartHeight: 80px;
 @bottomPartHeight: 115px;
 @buttonShadow: 0px -10px 53px -18px rgba(0, 0, 0, 0.7) inset;
 
-@import "pizza/pizza-card";
-@import "structure/buy-info";
+@import "structure/buy_info_order";
+@import "structure/main-menu-order";
 @import "structure/top-panel";
-@import "structure/main-menu";
 @import "structure/top-discount";
 @import "structure/bottom-discount";
 @import "structure/footer";
@@ -23,4 +22,8 @@
 body {
   position: relative;
   min-width: 700px;
+}
+
+#liqpay {
+  display: none;
 }

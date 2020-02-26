@@ -2,79 +2,79 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pizza</title>
-
     <!-- Bootsrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
     <!-- LESS основний файл -->
     <link rel="stylesheet/less" type="text/css" href="assets/less/main.less" />
     <!-- LESS JavaScript компілятор -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
-
-
 </head>
 <body>
-<div id="cart"></div>
-<div class="container">
-    <div class="row" id="pizza_list">
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail pizza-card">
-                <img src="assets/images/pizza_1.jpg">
-
-                <div class="caption"><h3>Thumbnail label</h3>
-
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
-                    <p>
-                        <a href="#" class="btn btn-primary">Button 2</a>
-                        <a href="#" class="btn btn-default">Button 1</a>
-                    </p>
-                </div>
-            </div>
+<div class="top-panel">
+    <div class="row top-info">
+        <div class="col-lg-3 visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block number">
+            (044) 222 5 222
         </div>
-
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail pizza-card">
-                <img src="assets/images/pizza_2.jpg">
-
-                <div class="caption"><h3>Thumbnail label</h3>
-
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
-                    <p>
-                        <a href="#" class="btn btn-primary">Button 3</a>
-                        <a href="#" class="btn btn-default">Button 4</a>
-                    </p>
-                </div>
-            </div>
+        <div class="col-lg-3 visible-lg-inline-block visible-md-inline-block time-work">
+            24 години/7 днів на тиждень
         </div>
-
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail pizza-card">
-                <img src="assets/images/pizza_3.jpg">
-
-                <div class="caption"><h3>Thumbnail label</h3>
-
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
-                    <p>
-                        <a href="#" class="btn btn-primary">Button 5</a>
-                        <a href="#" class="btn btn-default">Button 6</a>
-                    </p>
-                </div>
-            </div>
+        <div class="col-lg-3 visible-lg-inline-block price-deliver">
+            Безкоштовна доставка піци
+        </div>
+        <span class="btn btn-warning enter">Ввійти</span>
+    </div>
+    <div class="pizza-link">
+        <a class="hidden-xs" href="index.html">Піца</a>
+    </div>
+    <div class="top-discount">
+        <a href="index.html">PIZZA</a>
+        KMA
+        <img id="discount" src="assets/images/discount.svg">
+    </div>
+</div>
+<div class="buy-info">
+    <div class="top-part">
+    </div>
+    <div id="cart" class="main-part">
+    </div>
+    <div class="bottom-part">
+        <div class="row sum">
+        </div>
+        <div class="col-xs-12 lastcol">
+            <a href="order.html" class="order_button"><span class="btn btn-warning button">Замовити</span></a>
         </div>
     </div>
 </div>
+<div class="main-pizza">
+    <div class="inner-container">
+        <div class="menu">
+            <div class="title">
 
+            </div>
+            <div class="all-menu">
+
+            </div>
+        </div>
+        <div class="row" id="pizza_list">
+        </div>
+    </div>
+</div>
+<div class="bottom-discount">
+    <div class="title-discount">цього тижня на все</div>
+    <div class="content-discount">-20%</div>
+    <img id="discountsecond" src="assets/images/discount.svg">
+</div>
+<div class="footer">
+    <p>Pizza.22 - практичний проект в межах курсу JavaScript в Києво-Могилянській Академії</p>
+    <p>Доставка піци не здійснюється</p>
+</div>
 <!-- jQuery JavaScript -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <!--Bootsrap JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
 <!--Own JavaScript -->
-<!--<script type="text/javascript"  src="assets/js/main.js"> </script>-->
+<script type="text/javascript" src="assets/js/main.js"></script>
 </body>
 </html>

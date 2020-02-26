@@ -24,6 +24,10 @@ module.exports = function(grunt) {
             pizza: {
                 src:        'Frontend/src/main.js',
                 dest:       'Frontend/www/assets/js/main.js'
+            },
+            order: {
+              src: 'Frontend/src/main_order.js',
+              dest: 'Frontend/www/assets/js/main_order.js'
             }
         }
     };
@@ -36,7 +40,7 @@ module.exports = function(grunt) {
         //Назва завдання будь-яка
         scripts: {
             //На зміни в яких файлах реагувати
-            files: ['Frontend/src/**/*.js', 'Frontend/**/*.ejs'],
+            files: ['Frontend/src/**/*.js', 'Frontend/**/*.ejs', 'Frontend/src/*.js'],
             //Які завдання виконувати під час зміни в файлах
             tasks: ['browserify:pizza']
         }
@@ -56,6 +60,7 @@ module.exports = function(grunt) {
     grunt.registerTask('default',
         [
             'browserify:pizza',
+            'browserify:order'
             //Інші завдання які необхідно виконати
         ]
     );
