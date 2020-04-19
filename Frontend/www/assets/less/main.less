@@ -8,6 +8,7 @@
   position: fixed;
   top: 0;
   z-index: 100;
+    
 }
 
 .firstLine{
@@ -32,6 +33,7 @@
 }
 .upperLine{
   display: inline-block;
+  height: 100%;
   float: left;
   padding: 10px;
 }
@@ -120,7 +122,6 @@ min-height: 40px;
 .rectIMG{
   position: fixed;
   top:80px;
-  left:15px;
   z-index: 121;
   transform: rotate(180deg);
 }
@@ -155,7 +156,7 @@ min-height: 40px;
   right: 0;
   top:0px;
   height: 100%;
-  max-width: 350px;
+  width: 350px;
   background-color: lightgray;
   box-shadow: 0 0 10px rgba(0,0,0,5);
 
@@ -351,18 +352,13 @@ position: fixed;
   margin-bottom: 20px;
   margin-top: 5px;
 }
-@media screen and (max-width: 970px) {
+@media screen and (max-width: 1060px) {
   .freeDostavka{
     display: none;
   }
-    
-    .kindOfPizza {
-    margin-bottom: 20px;
-    margin-top: 5px;
-}
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 850px) {
   .freeDostavka{
     display: none;
   }
