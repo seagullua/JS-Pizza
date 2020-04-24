@@ -35,166 +35,21 @@
 
 <div class="header">
     <h3 class="headerAllPizzas">Усі піци</h3>
-    <span class="amountOfPizzas">5</span>
+    <span class="amountOfPizzas amOfP">0</span>
 </div>
 
 
 <div class=" kindOfPizza col-md-7 col-sm-6 col-xs-6">
-    <button class="btn btn-default fontSize marg">Усі</button>
-    <button class="btn btn-default fontSize marg">М'ясні</button>
-    <button class="btn btn-default fontSize marg">З ананасами</button>
-    <button class="btn btn-default fontSize marg">З грибами</button>
-    <button class="btn btn-default fontSize marg">З морепродуктами</button>
-    <button class="btn btn-default fontSize marg">Вега</button>
+    <button class="btn btn-default fontSize marg all back">Усі</button>
+    <button id="М’ясна" class="btn btn-default fontSize marg meat">М'ясні</button>
+    <button id="" class="btn btn-default fontSize marg ananas">З ананасами</button>
+    <button class="btn btn-default fontSize marg mushrooms">З грибами</button>
+    <button id="Морська піца" class="btn btn-default fontSize marg ocean">З морепродуктами</button>
+    <button id="Вега піца" class="btn btn-default fontSize marg vega">Вега</button>
 </div>
 
-
-<div id="cart"></div>
 <div class="container col-md-8 col-sm-6 col-xs-5 col-lg-8">
     <div class="row" id="pizza_list">
-        <div class="col-sm-12 col-md-4 ">
-            <div class="thumbnail pizza-card">
-                <img class="img-size" src="assets/images/pizza_1.jpg">
-                <div class="caption"><h3>Міксовий поло</h3>
-<div>М'ясна піца</div>
-<p>Вітчина, курка копчена, сир моцарелла, ананаси, кукурудза, петрушка, соус томатний.</p>
-                    <div class="diamAndWeight1">
-                        <img class="" src="assets/images/size-icon.svg">
-                        <div class="diam1">30</div>
-                        <img class="" src="assets/images/weight.svg">
-                        <div class="diam1">430</div>
-                    </div>
-                    <div class="diamAndWeight1">
-                        <img class="" src="assets/images/size-icon.svg">
-                        <div class="diam1">40</div>
-                        <img class="" src="assets/images/weight.svg">
-                        <div class="diam1">780</div>
-                    </div>
-                    <a class="prise"> 115 грн.</a>
-                        <a class="prise margprise"> 179 грн.</a>
-                        <div></div>
-                    <p>
-                        <a href="#" class="btn btn-buy">Купити</a>
-                        <a href="#" class="btn btn-buy margmore">Купити</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-4 ">
-        
-            <div class="thumbnail pizza-card">
-                <img class="img-size" src="assets/images/pizza_2.jpg">
-
-
-                <div class="caption"><h3>BBQ</h3>
-                    <div>М'ясна піца</div>
-                    <p>Мисливські ковбаски, ковбаски папероні, шинка, сир домашній, шампіньйони, петрушка, оливки.</p>
-                    <div class="diamAndWeight1">
-                        <img class="" src="assets/images/size-icon.svg">
-                        <div class="diam1">30</div>
-                        <img class="" src="assets/images/weight.svg">
-                        <div class="diam1">480</div>
-                    </div>
-                    <div class="diamAndWeight1">
-                        <img class="" src="assets/images/size-icon.svg">
-                        <div class="diam1">40</div>
-                        <img class="" src="assets/images/weight.svg">
-                        <div class="diam1">840</div>
-                    </div>
-                    <a class="prise"> 139 грн.</a>
-                        <a class="prise margprise"> 199 грн.</a>
-                        <div></div>
-                    <p>
-                        
-                        <a href="#" class="btn btn-buy">Купити</a>
-                        <a href="#" class="btn btn-buy margmore">Купити</a>
-                    </p>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-sm-12 col-md-4 ">
-            <div class="thumbnail pizza-card">
-                <img class="img-size" src="assets/images/pizza_7.jpg">
-
-                <div class="caption"><h3>Імпреза</h3>
-                    <div>М'ясна піца</div>
-            <p>Балик, салямі, курка, сир моцапелла, сир рокфорд, ананаси, томатна паста, петрушка.</p>
-                    <div class="diamAndWeight1">
-                        <img class="" src="assets/images/size-icon.svg">
-                        <div class="diam1">30</div>
-                        <img class="" src="assets/images/weight.svg">
-                        <div class="diam1">370</div>
-                    </div>
-                    <div class="diamAndWeight1">
-                        <img class="" src="assets/images/size-icon.svg">
-                        <div class="diam1">40</div>
-                        <img class="" src="assets/images/weight.svg">
-                        <div class="diam1">860</div>
-                    </div>
-                    <a class="prise"> 99 грн.</a>
-                        <a class="prise margprise"> 169 грн.</a>
-                        <div></div>
-                    <p>
-                        <a href="#" class="btn btn-buy">Купити</a>
-                        <a href="#" class="btn btn-buy margmore">Купити</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-sm-12 col-md-4 ">
-            <div class="thumbnail pizza-card">
-                <img class="img-size" src="assets/images/pizza_8.jpg">
-
-                <div class="caption"><h3>Дольче Маре</h3>
-                    <div>Морська піцца</div>
-                    <p>Криветки тигрові, мідії, ікра червона, філе червоної риби, сир моцарелла, оливкова олія, вершки.</p>
-                    <div class="diamAndWeight1">
-                        <img class="" src="assets/images/size-icon.svg">
-                        <div class="diam1">40</div>
-                        <img class="" src="assets/images/weight.svg">
-                        <div class="diam1">845</div>
-                    </div>
-                    <div></div>
-                        <a class="prise"> 399 грн.</a>
-                        <div></div>
-                    <p>
-                        <a href="#" class="btn btn-buy">Купити</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-4 ">
-            <div class="thumbnail pizza-card">
-                <img class="img-size" src="assets/images/pizza_4.jpg">
-
-                <div class="caption"><h3>Россо Густо</h3>
-
-                    <div>Морська піцца</div>
-                    <p>Ікра червона, лосось копчений, сир моцарелла, оливкова олія, вершка.</p>
-                    <div class="diamAndWeight1">
-                        <img class="" src="assets/images/size-icon.svg">
-                        <div class="diam1">30</div>
-                        <img class="" src="assets/images/weight.svg">
-                        <div class="diam1">400</div>
-                    </div>
-                    <div class="diamAndWeight1">
-                        <img class="" src="assets/images/size-icon.svg">
-                        <div class="diam1">40</div>
-                        <img class="" src="assets/images/weight.svg">
-                        <div class="diam1">700</div>
-                    </div>
-                    <a class="prise"> 189 грн.</a>
-                        <a class="prise margprise"> 299 грн.</a>
-                        <div></div>
-                    <p>
-                        <a href="#" class="btn btn-buy">Купити</a>
-                        <a href="#" class="btn btn-buy margmore">Купити</a>
-                    </p>
-                </div>
-            </div>
-        </div>    
         
     </div>
     <div class="bottomPanel col-md-12 col-sm-12 col-xs-12">
@@ -208,73 +63,16 @@
 <div class="col-sm-5 leftPanel col-md-4 col-xs-6">
 <div class="zamovlennya">
     <span class="zamovlWord">Замовлення</span>
-    <span class="amountOfPizzas">3</span>
+    <span class="amountOfPizzas counterOfZam">0</span>
     <button class="deleteZam btnclear btn-default">Очистити замовлення</button>
 </div>
-    <div class="overfloW ">
-<div class="pizzaZam">
-
-    <div class="namePizza">BBQ(Мала)</div>
-    <div class="diamAndWeight">
-        <img class="imgDiam styleOfBlock marg" src="assets/images/size-icon.svg">
-        <div class="diam styleOfBlock">30</div>
-        <img class="imgWeight styleOfBlock marg" src="assets/images/weight.svg">
-        <div class="weight styleOfBlock">480</div>
-        </div>
-    <img class="halfPizza" src="assets/images/pizza_2.jpg">
-    <div class="changeAmount">
-        <span class="price marg ">556грн</span>
-        <button class="button minus marg ">-</button>
-        <span class="amountOfPizzasOrdered marg">4</span>
-        <button class="button plus marg">+</button>
-        <button class="button delete marg">x</button>
-    </div>
-</div>
-
-
-    <div class="pizzaZam">
-
-        <div class="namePizza">Руссо Гуссто(Мала)</div>
-        <div class="diamAndWeight">
-            <img class="imgDiam styleOfBlock marg" src="assets/images/size-icon.svg">
-            <div class="diam styleOfBlock">30</div>
-            <img class="imgWeight styleOfBlock marg" src="assets/images/weight.svg">
-            <div class="weight styleOfBlock">400</div>
-        </div>
-        <img class="halfPizza" src="assets/images/pizza_4.jpg">
-        <div class="changeAmount">
-            <span class="price marg ">189грн</span>
-            <button class="button minus marg ">-</button>
-            <span class="amountOfPizzasOrdered marg">1</span>
-            <button class="button plus marg">+</button>
-            <button class="button delete marg">x</button>
-        </div>
-    </div>
-    <div class="pizzaZam">
-
-        <div class="namePizza">Міксовий поло(Велика)</div>
-        <div class="diamAndWeight">
-            <img class="imgDiam styleOfBlock marg" src="assets/images/size-icon.svg">
-            <div class="diam styleOfBlock">40</div>
-            <img class="imgWeight styleOfBlock marg" src="assets/images/weight.svg">
-            <div class="weight styleOfBlock">780</div>
-        </div>
-        <img class="halfPizza" src="assets/images/pizza_1.jpg">
-        <div class="changeAmount">
-            <span class="price marg ">179рн</span>
-            <button class="button minus marg ">-</button>
-            <span class="amountOfPizzasOrdered marg">1</span>
-            <button class="button plus marg">+</button>
-            <button class="button delete marg">x</button>
-        </div>
-    </div>
-
+    <div id="cart" class="overfloW ">
 
 </div>
 
     <div class="col-md-11 col-sm-11 sum  col-xs-11">
         <div class="sumWord">Сума замовлення</div>
-        <div class="sumOfBuy">924 грн</div>
+        <div class="sumOfBuy">0</div>
 <button class="buttonOrder">Замовити</button>
     </div>
 </div>
@@ -294,6 +92,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <!--Own JavaScript -->
-<!--<script type="text/javascript"  src="assets/js/main.js"> </script>-->
+<script type="text/javascript"  src="assets/js/main.js"> </script>
 </body>
 </html>
